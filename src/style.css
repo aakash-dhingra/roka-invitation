@@ -1,0 +1,528 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  --canvas: #F7F4EF;
+  --taupe: #C8B195;
+  --taupe-light: rgba(200, 177, 149, 0.4);
+  --taupe-xlight: rgba(200, 177, 149, 0.15);
+  --espresso: #2C2A29;
+  --espresso-mid: rgba(44, 42, 41, 0.6);
+  --espresso-soft: rgba(44, 42, 41, 0.35);
+  --gold: #B8965A;
+  --gold-light: rgba(184, 150, 90, 0.2);
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', system-ui, sans-serif;
+
+  --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ============================================
+   GLOBAL RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--espresso);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.45s; }
+
+/* ============================================
+   FLOATING LEAF ACCENTS
+   ============================================ */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(2deg); }
+}
+
+@keyframes floatSlowReverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(14px) rotate(-2.5deg); }
+}
+
+@keyframes fadeInHero {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.08); opacity: 0.15; }
+  100% { transform: scale(1); opacity: 0.4; }
+}
+
+.leaf-accent {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.07;
+}
+
+.leaf-accent-1 {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.leaf-accent-2 {
+  animation: floatSlowReverse 10s ease-in-out infinite;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero-section {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.hero-couple-names {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--espresso);
+  line-height: 1.1;
+  text-align: center;
+  animation: fadeInHero 1.4s var(--ease-premium) forwards;
+}
+
+.hero-connector {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  font-size: 0.7rem;
+  animation: fadeInHero 1.4s 0.3s var(--ease-premium) both;
+}
+
+.hero-tagline {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--espresso-mid);
+  animation: fadeInHero 1.4s 0.5s var(--ease-premium) both;
+}
+
+.hero-divider {
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--taupe), transparent);
+  animation: fadeInHero 1.4s 0.6s var(--ease-premium) both;
+}
+
+/* ============================================
+   COUNTDOWN TIMER
+   ============================================ */
+.countdown-container {
+  display: flex;
+  gap: 2rem;
+  animation: fadeInHero 1.4s 0.8s var(--ease-premium) both;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.countdown-number {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  color: var(--espresso);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.countdown-separator {
+  font-family: var(--font-serif);
+  color: var(--taupe-light);
+  align-self: flex-start;
+  padding-top: 0.25rem;
+}
+
+/* ============================================
+   SECTION COMMON
+   ============================================ */
+.section-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label::before,
+.section-label::after {
+  content: '';
+  height: 0.5px;
+  width: 2.5rem;
+  background: var(--taupe);
+  opacity: 0.6;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  color: var(--espresso);
+  line-height: 1.2;
+}
+
+/* ============================================
+   QUIZ / THE STORY
+   ============================================ */
+.quiz-card {
+  border: 0.5px solid rgba(200, 177, 149, 0.4);
+  background: rgba(200, 177, 149, 0.06);
+  backdrop-filter: blur(8px);
+  border-radius: 2px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.85rem 1.25rem;
+  border: 0.5px solid rgba(200, 177, 149, 0.35);
+  background: transparent;
+  color: var(--espresso);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-radius: 1px;
+  transition: all 0.35s var(--ease-premium);
+}
+
+.quiz-option-btn:hover {
+  background: rgba(200, 177, 149, 0.15);
+  border-color: var(--taupe);
+  transform: translateX(4px);
+}
+
+.quiz-option-btn.correct {
+  background: rgba(184, 150, 90, 0.15);
+  border-color: var(--gold);
+  color: var(--espresso);
+}
+
+.quiz-option-btn.incorrect {
+  background: rgba(200, 177, 149, 0.05);
+  border-color: rgba(200, 177, 149, 0.2);
+  color: var(--espresso-soft);
+}
+
+.quiz-progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(200, 177, 149, 0.3);
+  transition: background 0.4s ease;
+}
+
+.quiz-progress-dot.active {
+  background: var(--taupe);
+}
+
+.quiz-progress-dot.done {
+  background: var(--gold);
+}
+
+.couple-photo-reveal {
+  opacity: 0;
+  transform: scale(0.95) translateY(16px);
+  transition: opacity 1s var(--ease-premium), transform 1s var(--ease-premium);
+}
+
+.couple-photo-reveal.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ============================================
+   EVENT DETAILS
+   ============================================ */
+.detail-card {
+  border: 0.5px solid rgba(200, 177, 149, 0.4);
+  padding: 2rem 1.75rem;
+  border-radius: 2px;
+  background: rgba(200, 177, 149, 0.04);
+  transition: border-color 0.4s ease, background 0.4s ease;
+}
+
+.detail-card:hover {
+  border-color: rgba(200, 177, 149, 0.75);
+  background: rgba(200, 177, 149, 0.08);
+}
+
+.detail-card-icon {
+  width: 36px;
+  height: 36px;
+  border: 0.5px solid rgba(200, 177, 149, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--taupe);
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: var(--espresso);
+  color: var(--canvas);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 1px;
+  transition: all 0.35s var(--ease-premium);
+}
+
+.btn-primary:hover {
+  background: var(--taupe);
+  color: var(--canvas);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: transparent;
+  color: var(--espresso);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0.5px solid rgba(44, 42, 41, 0.45);
+  cursor: pointer;
+  border-radius: 1px;
+  transition: all 0.35s var(--ease-premium);
+}
+
+.btn-outline:hover {
+  border-color: var(--espresso);
+  background: rgba(44, 42, 41, 0.06);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   RSVP FORM
+   ============================================ */
+.form-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid rgba(200, 177, 149, 0.5);
+  padding: 0.75rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--espresso);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-field::placeholder {
+  color: var(--espresso-soft);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.form-field:focus {
+  border-bottom-color: var(--taupe);
+}
+
+.form-label {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+textarea.form-field {
+  resize: none;
+  min-height: 80px;
+}
+
+select.form-field {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C8B195' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+}
+
+/* ============================================
+   POLAROID GUESTBOOK
+   ============================================ */
+.polaroid-card {
+  background: #FEFCF8;
+  padding: 1rem 1rem 2.5rem 1rem;
+  box-shadow:
+    0 1px 3px rgba(44, 42, 41, 0.08),
+    0 4px 16px rgba(44, 42, 41, 0.06);
+  cursor: default;
+  transition: transform 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
+  position: relative;
+  border-radius: 1px;
+}
+
+.polaroid-card:hover {
+  box-shadow:
+    0 8px 32px rgba(44, 42, 41, 0.12),
+    0 2px 8px rgba(44, 42, 41, 0.08);
+  z-index: 10;
+}
+
+.polaroid-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  background: rgba(200, 177, 149, 0.35);
+  border-radius: 2px;
+}
+
+.polaroid-message {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--espresso);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.polaroid-author {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-top: 0.75rem;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer-ornament {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--taupe);
+  opacity: 0.5;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+@media (max-width: 640px) {
+  .countdown-container { gap: 1.2rem; }
+  .section-wrapper { padding: 3.5rem 1.25rem; }
+  .quiz-card { padding: 1.75rem 1.25rem; }
+}
+
+/* Hero grid: image appears first on mobile */
+@media (max-width: 680px) {
+  #hero > div[style*="grid"] {
+    display: flex !important;
+    flex-direction: column-reverse;
+  }
+  #hero .hero-image-panel {
+    order: -1;
+  }
+}
+
+/* Smooth image hover on desktop */
+#hero img[alt*="and"] {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
+}
+#hero img[alt*="and"]:hover {
+  transform: scale(1.015);
+  box-shadow: 0 28px 80px rgba(44,42,41,0.16), 0 6px 24px rgba(44,42,41,0.1);
+}
+
