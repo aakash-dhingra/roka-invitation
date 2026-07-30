@@ -150,38 +150,7 @@ export default function App() {
               {tagline}
             </p>
 
-            {/* Date badge */}
-            <div
-              style={{
-                display: 'inline-block',
-                border: '0.5px solid rgba(200,177,149,0.5)',
-                padding: '0.75rem 2rem',
-                marginBottom: '2.5rem',
-                borderRadius: '1px',
-                animation: 'fadeInHero 1.4s 0.6s var(--ease-premium) both',
-              }}
-            >
-              <p style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.65rem',
-                fontWeight: 500,
-                letterSpacing: '0.25em',
-                textTransform: 'uppercase',
-                color: 'var(--espresso)',
-              }}>
-                {displayDate}
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.58rem',
-                fontWeight: 300,
-                letterSpacing: '0.15em',
-                color: 'var(--taupe)',
-                marginTop: '0.25rem',
-              }}>
-                {venueName}
-              </p>
-            </div>
+
 
             {/* Countdown */}
             <div style={{ display: 'flex', justifyContent: 'center' }}>
