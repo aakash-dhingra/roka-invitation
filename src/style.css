@@ -528,3 +528,13 @@ select.form-field {
   box-shadow: 0 28px 80px rgba(44,42,41,0.16), 0 6px 24px rgba(44,42,41,0.1);
 }
 
+/* Spinner helper */
+.spin {
+  animation: rotateSpin 1.2s linear infinite;
+}
+@keyframes rotateSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
