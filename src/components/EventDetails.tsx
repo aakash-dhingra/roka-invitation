@@ -1,4 +1,5 @@
 import { Calendar, MapPin, Clock } from 'lucide-react';
+import { ScratchCard } from './ScratchCard';
 
 interface EventDetailsSectionProps {
   displayDate: string;
@@ -12,8 +13,8 @@ interface EventDetailsSectionProps {
 }
 
 function buildICSContent(props: EventDetailsSectionProps, summary: string) {
-  const start = new Date(`${props.eventDate}T11:00:00`);
-  const end = new Date(`${props.eventDate}T15:00:00`);
+  const start = new Date(`${props.eventDate}T19:00:00`);
+  const end   = new Date(`${props.eventDate}T23:59:00`);
 
   function fmt(d: Date) {
     return d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
@@ -69,48 +70,50 @@ export function EventDetailsSection(props: EventDetailsSectionProps) {
           marginBottom: '2.5rem',
         }}
       >
-        {/* Date card */}
-        <div className="detail-card">
-          <div className="detail-card-icon">
-            <Calendar size={16} strokeWidth={1.25} />
+        {/* Date card — wrapped in ScratchCard */}
+        <ScratchCard>
+          <div className="detail-card">
+            <div className="detail-card-icon">
+              <Calendar size={16} strokeWidth={1.25} />
+            </div>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.6rem',
+                fontWeight: 600,
+                letterSpacing: '0.25em',
+                textTransform: 'uppercase',
+                color: 'var(--taupe)',
+                marginBottom: '0.5rem',
+              }}
+            >
+              Date
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.35rem',
+                fontWeight: 400,
+                color: 'var(--espresso)',
+                lineHeight: 1.3,
+                marginBottom: '0.25rem',
+              }}
+            >
+              {displayDate}
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.7rem',
+                fontWeight: 400,
+                color: 'var(--espresso-mid)',
+                letterSpacing: '0.1em',
+              }}
+            >
+              {displayDay}
+            </p>
           </div>
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.6rem',
-              fontWeight: 600,
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-              color: 'var(--taupe)',
-              marginBottom: '0.5rem',
-            }}
-          >
-            Date
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: '1.35rem',
-              fontWeight: 400,
-              color: 'var(--espresso)',
-              lineHeight: 1.3,
-              marginBottom: '0.25rem',
-            }}
-          >
-            {displayDate}
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.7rem',
-              fontWeight: 300,
-              color: 'var(--espresso-mid)',
-              letterSpacing: '0.1em',
-            }}
-          >
-            {displayDay}
-          </p>
-        </div>
+        </ScratchCard>
 
         {/* Time card */}
         <div className="detail-card">

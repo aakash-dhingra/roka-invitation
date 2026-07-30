@@ -8,9 +8,9 @@
   --taupe: #C8B195;
   --taupe-light: rgba(200, 177, 149, 0.4);
   --taupe-xlight: rgba(200, 177, 149, 0.15);
-  --espresso: #2C2A29;
-  --espresso-mid: rgba(44, 42, 41, 0.6);
-  --espresso-soft: rgba(44, 42, 41, 0.35);
+  --espresso: #1E1C1B;
+  --espresso-mid: rgba(30, 28, 27, 0.80);
+  --espresso-soft: rgba(30, 28, 27, 0.55);
   --gold: #B8965A;
   --gold-light: rgba(184, 150, 90, 0.2);
 
@@ -40,6 +40,8 @@ body {
   color: var(--espresso);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ============================================
@@ -205,10 +207,10 @@ body {
 .section-label {
   font-family: var(--font-sans);
   font-size: 0.65rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--taupe);
+  color: #8A6F4E;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -225,7 +227,7 @@ body {
 
 .section-title {
   font-family: var(--font-serif);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--espresso);
   line-height: 1.2;
 }
@@ -251,9 +253,9 @@ body {
   background: transparent;
   color: var(--espresso);
   font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   cursor: pointer;
   border-radius: 1px;
   transition: all 0.35s var(--ease-premium);
@@ -392,7 +394,7 @@ body {
   border-bottom: 0.5px solid rgba(200, 177, 149, 0.5);
   padding: 0.75rem 0;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--espresso);
   outline: none;
@@ -411,11 +413,11 @@ body {
 
 .form-label {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 600;
+  font-size: 0.62rem;
+  font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--taupe);
+  color: #8A6F4E;
   display: block;
   margin-bottom: 0.25rem;
 }
@@ -470,18 +472,18 @@ select.form-field {
   font-family: var(--font-serif);
   font-size: 1rem;
   font-style: italic;
-  color: var(--espresso);
+  color: #1E1C1B;
   line-height: 1.6;
   word-break: break-word;
 }
 
 .polaroid-author {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 500;
+  font-size: 0.62rem;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--taupe);
+  color: #8A6F4E;
   margin-top: 0.75rem;
 }
 
