@@ -76,17 +76,16 @@ export default function App() {
           <p
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(0.85rem, 2vw, 1.05rem)',
-              color: 'var(--gold-shine)',
-              fontStyle: 'italic',
-              marginBottom: '1rem',
+              fontSize: 'clamp(1.05rem, 2.5vw, 1.35rem)',
+              color: '#FFF3F5',
+              marginBottom: '1.25rem',
               letterSpacing: '0.05em',
-              lineHeight: 1.4,
-              opacity: 0.9,
+              lineHeight: 1.5,
+              opacity: 0.95,
             }}
           >
             With the blessings of<br />
-            <strong>Shree Sardari Lal Dhingra</strong> &amp; <strong>Shri Mati Santosh Kumari</strong>
+            <strong style={{ color: 'var(--gold-shine)' }}>Shree Sardari Lal Dhingra</strong> &amp; <strong style={{ color: 'var(--gold-shine)' }}>Shri Mati Santosh Kumari</strong>
           </p>
 
           <p className="hero-ceremony-label">✦ &nbsp; Roka Ceremony &nbsp; ✦</p>
