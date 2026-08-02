@@ -1,6 +1,8 @@
 import './style.css';
 import { EVENT_CONFIG } from './config';
 import { LeafAccents } from './components/LeafAccents';
+import { PetalRain } from './components/PetalRain';
+import { GoldDivider } from './components/GoldDivider';
 import { CountdownTimer } from './components/CountdownTimer';
 import { ScrollReveal } from './components/ScrollReveal';
 import { QuizSection } from './components/QuizSection';
@@ -26,134 +28,126 @@ const {
 } = EVENT_CONFIG;
 
 // ─────────────────────────────────────────────
-//  Section header utility
-// ─────────────────────────────────────────────
-function SectionHeader({ label, title }: { label: string; title: string }) {
-  return (
-    <div style={{ marginBottom: '3rem' }}>
-      <div className="section-label" style={{ marginBottom: '1.25rem' }}>
-        {label}
-      </div>
-      <h2
-        className="section-title"
-        style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
-      >
-        {title}
-      </h2>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────
-//  Thin horizontal divider
-// ─────────────────────────────────────────────
-function Divider() {
-  return (
-    <div
-      style={{
-        height: '0.5px',
-        background: 'linear-gradient(to right, transparent, rgba(200,177,149,0.4), transparent)',
-        margin: '0 auto',
-        maxWidth: '900px',
-      }}
-    />
-  );
-}
-
-// ─────────────────────────────────────────────
 //  APP
 // ─────────────────────────────────────────────
 export default function App() {
   return (
-    <div style={{ position: 'relative', background: 'var(--canvas)', minHeight: '100dvh' }}>
-      {/* Fixed floating leaf accents */}
+    <>
+      {/* ── Falling rose petals overlay ── */}
+      <PetalRain count={22} />
+
+      {/* ── Floating leaf accents ── */}
       <LeafAccents />
 
       {/* ══════════════════════════════════════
-           HERO
+           HERO SECTION
          ══════════════════════════════════════ */}
-      <section id="hero" className="hero-section" style={{ minHeight: '100dvh', padding: '0', display: 'block' }}>
+      <section id="hero" className="hero-section">
+        {/* Mandala background overlay */}
+        <img
+          src="/mandala-bg.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.15,
+            mixBlendMode: 'screen',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+        />
 
-        {/* ── Floral border top ── */}
-        <div style={{ width: '100%', overflow: 'hidden', lineHeight: 0, animation: 'fadeInHero 1.2s var(--ease-premium) both' }}>
-          <img
-            src="/floral-border.png"
-            alt="floral ornament"
-            style={{
-              width: '100%',
-              maxHeight: '120px',
-              objectFit: 'cover',
-              objectPosition: 'center top',
-              opacity: 0.7,
-              display: 'block',
-            }}
-          />
-        </div>
+        {/* Radial gradient depth overlay */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse at center, rgba(139,0,32,0.3) 0%, rgba(28,5,0,0.85) 100%)',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }} />
 
-        {/* ── Main Hero Content ── */}
+        {/* Main hero content grid */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             alignItems: 'center',
-            gap: '3rem',
+            gap: '3.5rem',
             maxWidth: '1100px',
-            margin: '0 auto',
+            width: '100%',
             padding: 'clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem)',
             position: 'relative',
             zIndex: 1,
           }}
         >
-          {/* ── Left: Text block ── */}
+          {/* ── LEFT: Text block ── */}
           <div style={{ textAlign: 'center' }}>
             {/* Ceremony label */}
             <p
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '0.4em',
-                textTransform: 'uppercase',
-                color: 'var(--espresso)',
-                marginBottom: '1.75rem',
-              }}
+              className="hero-connector"
+              style={{ marginBottom: '1.5rem', animation: 'fadeInHero 1s 0s var(--ease-premium) both' }}
             >
               ✦ &nbsp; {eventTitle} &nbsp; ✦
             </p>
 
-            {/* Names */}
+            {/* Bride name */}
             <h1
               className="hero-couple-names"
-              style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)', marginBottom: '0.5rem', lineHeight: 1.05 }}
+              style={{ animation: 'fadeInHero 1.2s 0.15s var(--ease-premium) both' }}
             >
               {brideName}
             </h1>
 
-            {/* Decorative & */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', margin: '0.75rem 0', animation: 'fadeInHero 1.4s 0.25s var(--ease-premium) both' }}>
-              <div style={{ flex: 1, height: '0.5px', background: 'linear-gradient(to right, transparent, rgba(200,177,149,0.5))' }} />
-              <span style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontStyle: 'italic', color: 'var(--taupe)', fontWeight: 300 }}>
+            {/* Decorative & divider */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '1rem',
+                margin: '0.75rem 0',
+                animation: 'fadeInHero 1.2s 0.25s var(--ease-premium) both',
+              }}
+            >
+              <div style={{ flex: 1, height: '0.5px', background: 'linear-gradient(to right, transparent, rgba(201,149,42,0.5))' }} />
+              <span style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+                fontStyle: 'italic',
+                color: 'var(--gold)',
+                fontWeight: 300,
+              }}>
                 &amp;
               </span>
-              <div style={{ flex: 1, height: '0.5px', background: 'linear-gradient(to left, transparent, rgba(200,177,149,0.5))' }} />
+              <div style={{ flex: 1, height: '0.5px', background: 'linear-gradient(to left, transparent, rgba(201,149,42,0.5))' }} />
             </div>
 
+            {/* Groom name */}
             <h1
               className="hero-couple-names"
-              style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)', marginBottom: '2rem', lineHeight: 1.05, animationDelay: '0.15s' }}
+              style={{ animation: 'fadeInHero 1.2s 0.35s var(--ease-premium) both' }}
             >
               {groomName}
             </h1>
 
             {/* Tagline */}
-            <p className="hero-tagline" style={{ fontSize: '0.63rem', marginBottom: '2.5rem' }}>
+            <p
+              className="hero-tagline"
+              style={{
+                marginTop: '1.25rem',
+                marginBottom: '2.5rem',
+                animation: 'fadeInHero 1.2s 0.5s var(--ease-premium) both',
+              }}
+            >
               {tagline}
             </p>
 
-
-
             {/* Countdown */}
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', animation: 'fadeInHero 1.2s 0.65s var(--ease-premium) both' }}>
               <CountdownTimer eventDate={eventDate} />
             </div>
 
@@ -165,104 +159,83 @@ export default function App() {
                 alignItems: 'center',
                 gap: '0.5rem',
                 marginTop: '3rem',
-                animation: 'fadeInHero 2s 1.5s var(--ease-premium) both',
+                animation: 'fadeInHero 1.5s 1.5s var(--ease-premium) both',
               }}
             >
               <p style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.55rem',
+                fontFamily: 'var(--font-cinzel)',
+                fontSize: '0.52rem',
                 fontWeight: 500,
-                letterSpacing: '0.3em',
+                letterSpacing: '0.4em',
                 textTransform: 'uppercase',
-                color: 'var(--espresso-soft)',
+                color: 'var(--ivory-muted)',
               }}>
                 Scroll to explore
               </p>
               <div style={{
                 width: '1px',
-                height: '36px',
-                background: 'linear-gradient(to bottom, var(--taupe), transparent)',
-                opacity: 0.5,
+                height: '40px',
+                background: 'linear-gradient(to bottom, var(--gold), transparent)',
+                opacity: 0.7,
+                animation: 'scrollLine 1.5s ease-in-out infinite',
               }} />
             </div>
           </div>
 
-          {/* ── Right: Couple image ── */}
+          {/* ── RIGHT: Couple image with ornate frame ── */}
           <div
             style={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              animation: 'fadeInHero 1.6s 0.4s var(--ease-premium) both',
+              animation: 'fadeInHero 1.4s 0.4s var(--ease-premium) both',
             }}
           >
-            <div style={{ position: 'relative', display: 'inline-block', maxWidth: '480px', width: '100%' }}>
-              {/* Offset decorative frame */}
-              <div style={{
-                position: 'absolute',
-                top: '-14px',
-                left: '-14px',
-                right: '14px',
-                bottom: '14px',
-                border: '0.5px solid rgba(200,177,149,0.35)',
-                borderRadius: '2px',
-                pointerEvents: 'none',
-                zIndex: 0,
-              }} />
-              <div style={{
-                position: 'absolute',
-                top: '14px',
-                left: '14px',
-                right: '-14px',
-                bottom: '-14px',
-                border: '0.5px solid rgba(200,177,149,0.2)',
-                borderRadius: '2px',
-                pointerEvents: 'none',
-                zIndex: 0,
-              }} />
+            <div style={{ position: 'relative', maxWidth: '460px', width: '100%' }}>
+              {/* Floral frame overlay */}
+              <img
+                src="/floral-frame.png"
+                alt=""
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  inset: '-5%',
+                  width: '110%',
+                  height: '110%',
+                  objectFit: 'contain',
+                  zIndex: 2,
+                  pointerEvents: 'none',
+                  mixBlendMode: 'multiply',
+                  opacity: 0.85,
+                }}
+              />
+              {/* Main couple photo */}
               <img
                 src="/couple.png"
                 alt={`${brideName} and ${groomName}`}
                 style={{
                   width: '100%',
                   height: 'auto',
-                  display: 'block',
                   borderRadius: '2px',
                   position: 'relative',
                   zIndex: 1,
-                  boxShadow: '0 20px 60px rgba(44,42,41,0.12), 0 4px 16px rgba(44,42,41,0.08)',
+                  boxShadow: '0 24px 60px rgba(28,5,0,0.5), 0 4px 16px rgba(28,5,0,0.3)',
                 }}
               />
-              {/* Caption ribbon */}
-              <div style={{
-                position: 'absolute',
-                bottom: '-1.5rem',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                background: 'var(--canvas)',
-                border: '0.5px solid rgba(200,177,149,0.4)',
-                padding: '0.45rem 1.5rem',
-                whiteSpace: 'nowrap',
-                zIndex: 2,
-                borderRadius: '1px',
-              }}>
-                <p style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.58rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.25em',
-                  textTransform: 'uppercase',
-                  color: 'var(--taupe)',
-                }}>
-                  {brideName} &amp; {groomName}
-                </p>
-              </div>
             </div>
           </div>
         </div>
 
-        {/* ── Floral border bottom ── */}
-        <div style={{ width: '100%', overflow: 'hidden', lineHeight: 0, marginTop: '3rem', animation: 'fadeInHero 1.2s var(--ease-premium) both' }}>
+        {/* Floral border bottom */}
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 2,
+          overflow: 'hidden',
+          lineHeight: 0,
+        }}>
           <img
             src="/floral-border.png"
             alt=""
@@ -280,39 +253,53 @@ export default function App() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════
-           THE STORY — QUIZ
-         ══════════════════════════════════════ */}
-      <Divider />
-      <section id="story" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="section-wrapper">
-          <ScrollReveal>
-            <SectionHeader label="The Story" title={`How well do\nyou know them?`} />
-          </ScrollReveal>
+      {/* ── Gold Divider ── */}
+      <GoldDivider />
 
-          <ScrollReveal delay={1}>
-            <div className="quiz-card">
-              <QuizSection
-                questions={quizQuestions}
-                brideName={brideName}
-                groomName={groomName}
-              />
-            </div>
-          </ScrollReveal>
-        </div>
+      {/* ══════════════════════════════════════
+           STORY / ABOUT — DARK
+         ══════════════════════════════════════ */}
+      <section id="story" className="section-dark">
+        <ScrollReveal>
+          <div className="section-wrapper">
+            <p className="section-label" style={{ color: 'var(--gold)' }}>Their Story</p>
+            <h2
+              className="section-title"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--ivory-text)' }}
+            >
+              A beautiful beginning
+            </h2>
+            <p style={{
+              color: 'var(--ivory-muted)',
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(1.05rem, 2vw, 1.2rem)',
+              lineHeight: 1.8,
+              marginTop: '1.5rem',
+              maxWidth: '680px',
+            }}>
+              Two hearts, one beautiful journey. Join us as {brideName} and {groomName} take
+              their first step towards forever — a moment filled with love, blessings, and new beginnings.
+            </p>
+          </div>
+        </ScrollReveal>
       </section>
 
-      {/* ══════════════════════════════════════
-           EVENT DETAILS
-         ══════════════════════════════════════ */}
-      <Divider />
-      <section id="details" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="section-wrapper">
-          <ScrollReveal>
-            <SectionHeader label="Event Details" title="Join us to celebrate" />
-          </ScrollReveal>
+      {/* ── Gold Divider (flipped) ── */}
+      <GoldDivider flip />
 
-          <ScrollReveal delay={1}>
+      {/* ══════════════════════════════════════
+           EVENT DETAILS — LIGHT
+         ══════════════════════════════════════ */}
+      <section id="details" className="section-light">
+        <ScrollReveal>
+          <div className="section-wrapper">
+            <p className="section-label">When &amp; Where</p>
+            <h2
+              className="section-title"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '2.5rem' }}
+            >
+              Event Details
+            </h2>
             <EventDetailsSection
               displayDate={displayDate}
               displayDay={displayDay}
@@ -323,108 +310,159 @@ export default function App() {
               googleMapsUrl={googleMapsUrl}
               eventDate={eventDate}
             />
-          </ScrollReveal>
-        </div>
+          </div>
+        </ScrollReveal>
       </section>
 
-      {/* ══════════════════════════════════════
-           RSVP + GUESTBOOK
-         ══════════════════════════════════════ */}
-      <Divider />
-      <section id="rsvp" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="section-wrapper">
-          <ScrollReveal>
-            <SectionHeader label="RSVP" title="Will you be joining?" />
-          </ScrollReveal>
+      {/* ── Gold Divider ── */}
+      <GoldDivider />
 
-          <ScrollReveal delay={1}>
+      {/* ══════════════════════════════════════
+           QUIZ — DARK
+         ══════════════════════════════════════ */}
+      <section id="quiz" className="section-dark">
+        <ScrollReveal>
+          <div className="section-wrapper">
+            <p className="section-label" style={{ color: 'var(--gold)' }}>How Well Do You Know Them?</p>
+            <h2
+              className="section-title"
+              style={{
+                color: 'var(--ivory-text)',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                marginBottom: '2.5rem',
+              }}
+            >
+              The Couple Quiz
+            </h2>
+            <div className="quiz-card">
+              <QuizSection
+                questions={quizQuestions}
+                brideName={brideName}
+                groomName={groomName}
+              />
+            </div>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ── Gold Divider (flipped) ── */}
+      <GoldDivider flip />
+
+      {/* ══════════════════════════════════════
+           RSVP — LIGHT
+         ══════════════════════════════════════ */}
+      <section id="rsvp" className="section-light">
+        <ScrollReveal>
+          <div className="section-wrapper">
+            <p className="section-label">Will You Join Us?</p>
+            <h2
+              className="section-title"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '0.75rem' }}
+            >
+              RSVP
+            </h2>
+            <p style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              color: 'var(--espresso-mid)',
+              marginBottom: '2.5rem',
+              fontSize: '1.05rem',
+            }}>
+              Kindly respond by {rsvpDeadline}.
+            </p>
             <RSVPForm
               rsvpDeadline={rsvpDeadline}
               brideName={brideName}
               groomName={groomName}
             />
-          </ScrollReveal>
-        </div>
+          </div>
+        </ScrollReveal>
       </section>
 
-      {/* ══════════════════════════════════════
-           WALL OF LOVE — POLAROID GUESTBOOK
-         ══════════════════════════════════════ */}
-      <Divider />
-      <section id="guestbook" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="section-wrapper">
-          <ScrollReveal>
-            <SectionHeader label="Wall of Love" title="Leave your mark" />
-          </ScrollReveal>
+      {/* ── Gold Divider ── */}
+      <GoldDivider />
 
-          <ScrollReveal delay={1}>
+      {/* ══════════════════════════════════════
+           WALL OF LOVE — DARK
+         ══════════════════════════════════════ */}
+      <section id="guestbook" className="section-dark">
+        <ScrollReveal>
+          <div className="section-wrapper">
+            <p className="section-label" style={{ color: 'var(--gold)' }}>Spread the Love</p>
+            <h2
+              className="section-title"
+              style={{
+                color: 'var(--ivory-text)',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                marginBottom: '0.5rem',
+              }}
+            >
+              Wall of Love
+            </h2>
+            <p style={{
+              color: 'var(--ivory-muted)',
+              fontStyle: 'italic',
+              fontFamily: 'var(--font-serif)',
+              marginBottom: '2.5rem',
+              fontSize: '1.05rem',
+            }}>
+              Pin your blessings for {brideName} &amp; {groomName}.
+            </p>
             <WallOfLove />
-          </ScrollReveal>
-        </div>
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* ══════════════════════════════════════
            FOOTER
          ══════════════════════════════════════ */}
-      <Divider />
-      <footer
-        style={{
-          textAlign: 'center',
-          padding: '4rem 1.5rem 3rem',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        <ScrollReveal>
-          <p className="footer-ornament">❧</p>
-          <h2
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
-              fontWeight: 300,
-              fontStyle: 'italic',
-              color: 'var(--espresso)',
-              marginTop: '1rem',
-              marginBottom: '0.75rem',
-            }}
-          >
-            {brideName} &amp; {groomName}
-          </h2>
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.65rem',
-              fontWeight: 300,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: 'var(--taupe)',
-              marginBottom: '2.5rem',
-            }}
-          >
-            {displayDate} &nbsp;·&nbsp; {venueName}
-          </p>
-          <div
-            style={{
-              width: '40px',
-              height: '0.5px',
-              background: 'rgba(200,177,149,0.5)',
-              margin: '0 auto',
-            }}
-          />
-          <p
-            style={{
-              marginTop: '2rem',
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.6rem',
-              fontWeight: 300,
-              letterSpacing: '0.1em',
-              color: 'var(--espresso-soft)',
-            }}
-          >
-            Made with love · {new Date().getFullYear()}
-          </p>
-        </ScrollReveal>
+      <footer style={{
+        background: '#0F0200',
+        padding: '3rem 2rem 2.5rem',
+        textAlign: 'center',
+        position: 'relative',
+        zIndex: 1,
+      }}>
+        <p style={{
+          fontFamily: 'var(--font-script)',
+          color: 'var(--gold)',
+          fontSize: '2.5rem',
+          marginBottom: '0.5rem',
+          lineHeight: 1.2,
+        }}>
+          {brideName} &amp; {groomName}
+        </p>
+        <p style={{
+          fontFamily: 'var(--font-cinzel)',
+          color: 'var(--ivory-muted)',
+          fontSize: '0.6rem',
+          letterSpacing: '0.3em',
+          textTransform: 'uppercase',
+        }}>
+          {displayDate} &nbsp;·&nbsp; {venueName}
+        </p>
+        <img
+          src="/gold-divider.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            width: '200px',
+            opacity: 0.4,
+            margin: '1.5rem auto 0',
+            mixBlendMode: 'screen',
+          }}
+        />
+        <p style={{
+          fontFamily: 'var(--font-cinzel)',
+          fontSize: '0.52rem',
+          color: 'var(--ivory-muted)',
+          letterSpacing: '0.2em',
+          marginTop: '1.5rem',
+          opacity: 0.5,
+        }}>
+          Made with love · {new Date().getFullYear()}
+        </p>
       </footer>
-    </div>
+    </>
   );
 }
