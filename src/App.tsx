@@ -14,6 +14,7 @@ import { ScrollTimelineConnector } from './components/ScrollTimelineConnector';
 import { Garland } from './components/Garland';
 import { AudioPlayer } from './components/AudioPlayer';
 import { SwingingBells } from './components/SwingingBells';
+import { DholPlayer } from './components/DholPlayer';
 
 const {
   brideName,
@@ -36,6 +37,9 @@ export default function App() {
     <>
       {/* ── Background Music Player (Traditional Sitar/Flute Loop) ── */}
       <AudioPlayer />
+
+      {/* ── Interactive Punjabi Dhol Player (beats faster on cursor speed / scroll speed) ── */}
+      <DholPlayer />
 
       {/* ── Dynamic Particle Canvas (Attracts/repels to cursor, responds to scroll) ── */}
       <InteractiveGoldDust />
