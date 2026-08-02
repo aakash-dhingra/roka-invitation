@@ -163,7 +163,7 @@ export default function App() {
               <DholPlayer isFloating={false} />
             </div>
             <div className="story-img-frame">
-              <img src="/couple-palace.png" alt="Aanchal and Randeep at the palace" className="story-img" />
+              <img src="/couple-story.jpg" alt="Dr Aanchal Dhingra and Randeep Singh" className="story-img" />
               <img src="/floral-frame.png" alt="" aria-hidden="true" className="story-frame-overlay" />
             </div>
           </div>
