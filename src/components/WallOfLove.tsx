@@ -9,7 +9,7 @@ interface Message {
   rotation: number;
 }
 
-const BIN_URL = 'https://extendsclass.com/api/json-storage/bin/fcffbbd';
+const BIN_URL = 'https://json.extendsclass.com/bin/fcffbbd';
 
 function generateRotation() {
   return (Math.random() - 0.5) * 6; // between -3 and +3
