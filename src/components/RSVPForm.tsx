@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Send, Heart, PartyPopper, XCircle } from 'lucide-react';
 
 interface RSVPFormProps {
-  rsvpDeadline: string;
+  rsvpDeadline?: string;
   brideName: string;
   groomName: string;
 }
@@ -170,19 +170,7 @@ export function RSVPForm({ rsvpDeadline, brideName, groomName }: RSVPFormProps) 
         background: 'rgba(200,177,149,0.04)',
       }}
     >
-      <p
-        style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: '0.65rem',
-          fontWeight: 300,
-          letterSpacing: '0.12em',
-          color: 'var(--espresso-mid)',
-          marginBottom: '2rem',
-        }}
-      >
-        Kindly respond by{' '}
-        <span style={{ color: 'var(--espresso)', fontWeight: 500 }}>{rsvpDeadline}</span>
-      </p>
+
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
 

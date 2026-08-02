@@ -15,13 +15,13 @@ export const EVENT_CONFIG = {
   eventDate: "2026-08-21", // YYYY-MM-DD
   displayDate: "21st August, 2026",
   displayDay: "Friday",
-  startTime: "7:00 PM",
-  endTime: "12:00 AM",
+  startTime: "7:00 PM Onwards",
+  endTime: "",
 
   // Venue
   venueName: "Golden Apple Mansion",
   venueAddress: "Pritampura, New Delhi",
-  googleMapsUrl: "https://maps.google.com/?q=Golden+Apple+Mansion+Pritampura+New+Delhi",
+  googleMapsUrl: "https://share.google/WXtafUxJtakJX3XV9",
 
   // RSVP Contact
   rsvpDeadline: "10th August, 2026",

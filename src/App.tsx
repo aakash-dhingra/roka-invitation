@@ -196,7 +196,6 @@ export default function App() {
           <div className="section-wrapper">
             <p className="section-eyebrow" style={{ color: 'var(--gold)' }}>Will You Join Us?</p>
             <h2 className="section-heading" style={{ color: 'var(--ivory-text)' }}>RSVP</h2>
-            <p className="rsvp-subtitle">Kindly respond by {rsvpDeadline}.</p>
             <RSVPForm brideName={brideName} groomName={groomName} rsvpDeadline={rsvpDeadline} />
           </div>
         </ScrollReveal>

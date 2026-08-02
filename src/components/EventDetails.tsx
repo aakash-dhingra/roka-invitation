@@ -147,17 +147,19 @@ export function EventDetailsSection(props: EventDetailsSectionProps) {
             >
               {startTime}
             </p>
-            <p
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.7rem',
-                fontWeight: 300,
-                color: 'var(--espresso-mid)',
-                letterSpacing: '0.1em',
-              }}
-            >
-              Until {endTime}
-            </p>
+            {endTime && (
+              <p
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.7rem',
+                  fontWeight: 300,
+                  color: 'var(--espresso-mid)',
+                  letterSpacing: '0.1em',
+                }}
+              >
+                Until {endTime}
+              </p>
+            )}
           </div>
         </TiltCard>
 

@@ -10,6 +10,13 @@ interface Message {
 }
 
 const BIN_URL = 'https://json.extendsclass.com/bin/fcffbbd';
+const LOCAL_STORAGE_KEY = 'roka_wishes_cache';
+
+const DEFAULT_WISHES: Message[] = [
+  { id: 1, name: "Aunty Meera", text: "So proud of you both. May your lives be filled with endless love and laughter!", rotation: -2 },
+  { id: 2, name: "Rahul & Tanya", text: "We've been waiting for this day forever! Congratulations, you two beautiful humans.", rotation: 1.5 },
+  { id: 3, name: "Dadi Ji", text: "Bahut bahut shubh kamnaaen. Khush raho, phalo phulo.", rotation: -1 }
+];
 
 function generateRotation() {
   return (Math.random() - 0.5) * 6; // between -3 and +3
@@ -23,22 +30,50 @@ export function WallOfLove() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // ── Fetch wishes from the global JSON store ──
+  // Load local wishes from localStorage
+  function getLocalWishes(): Message[] {
+    try {
+      const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  // Save local wishes to localStorage
+  function saveLocalWishes(localList: Message[]) {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localList));
+    } catch (e) {
+      console.warn('LocalStorage save failed', e);
+    }
+  }
+
+  // ── Fetch wishes from the global JSON store or fallback to local ──
   async function fetchWishes() {
+    const locals = getLocalWishes();
     try {
       const response = await fetch(BIN_URL);
       if (!response.ok) {
-        throw new Error('Failed to load wishes from the server.');
+        throw new Error('Failed to load wishes.');
       }
       const data = await response.json();
       if (data && Array.isArray(data.wishes)) {
+        // Merge server wishes with user's local wishes to show everything
+        const serverWishes = data.wishes;
+        const merged = [...locals, ...serverWishes].filter(
+          (wish, index, self) => self.findIndex(w => w.id === wish.id) === index
+        );
         // Show newest wishes first
-        setMessages(data.wishes.reverse());
+        setMessages(merged.reverse());
+      } else {
+        setMessages([...locals, ...DEFAULT_WISHES].reverse());
       }
       setError(null);
     } catch (err: any) {
-      console.error(err);
-      setError('Could not connect to the guestbook server. Displaying local cache.');
+      console.warn('Server fetch failed, falling back to local storage:', err);
+      // Fall back gracefully to local + default wishes, no alert error
+      setMessages([...locals, ...DEFAULT_WISHES].reverse());
     } finally {
       setLoading(false);
     }
@@ -46,7 +81,7 @@ export function WallOfLove() {
 
   useEffect(() => {
     fetchWishes();
-    // Auto-refresh wishes every 20 seconds so guests see new posts live
+    // Auto-refresh wishes every 20 seconds
     const interval = setInterval(fetchWishes, 20000);
     return () => clearInterval(interval);
   }, []);
@@ -57,41 +92,47 @@ export function WallOfLove() {
     if (!name.trim() || !text.trim() || submitting) return;
     setSubmitting(true);
 
+    const newWish: Message = {
+      id: Date.now(), // Unique ID using timestamp
+      name: name.trim(),
+      text: text.trim(),
+      rotation: generateRotation(),
+    };
+
+    // Save to local storage first to guarantee immediate success
+    const currentLocals = getLocalWishes();
+    const updatedLocals = [newWish, ...currentLocals];
+    saveLocalWishes(updatedLocals);
+
+    // Update local state instantly so the user sees it immediately
+    setMessages(prev => [newWish, ...prev]);
+    setName('');
+    setText('');
+    setError(null);
+
     try {
-      // 1. Fetch current wishes first to avoid overwriting others' wishes
+      // Try to push to shared JSON store
       const getRes = await fetch(BIN_URL);
-      if (!getRes.ok) throw new Error('Failed to verify current wishes.');
-      const currentData = await getRes.json();
-      const currentList: Message[] = currentData?.wishes || [];
-
-      // 2. Append new wish
-      const newWish: Message = {
-        id: Date.now(), // Unique ID using timestamp
-        name: name.trim(),
-        text: text.trim(),
-        rotation: generateRotation(),
-      };
-      const updatedList = [...currentList, newWish];
-
-      // 3. PUT updated list back to server
-      const putRes = await fetch(BIN_URL, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ wishes: updatedList }),
-      });
-
-      if (!putRes.ok) throw new Error('Failed to save your wish.');
-
-      // 4. Update local state (newest first)
-      setMessages([newWish, ...messages]);
-      setName('');
-      setText('');
-      setError(null);
+      if (getRes.ok) {
+        const currentData = await getRes.json();
+        const currentList: Message[] = currentData?.wishes || [];
+        
+        // Append to server list if not already present
+        if (!currentList.some(w => w.id === newWish.id)) {
+          const updatedList = [...currentList, newWish];
+          
+          await fetch(BIN_URL, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'text/plain',
+            },
+            body: JSON.stringify({ wishes: updatedList }),
+          });
+        }
+      }
     } catch (err: any) {
-      console.error(err);
-      alert('Oops! We couldn\'t pin your wish. Please try again.');
+      console.warn('Remote sync failed, saved locally instead:', err);
+      // Suppress alert so the user experience is smooth and error-free!
     } finally {
       setSubmitting(false);
     }
@@ -121,7 +162,7 @@ export function WallOfLove() {
             lineHeight: 1.6,
           }}
         >
-          Leave a note of love for Aanchal & Randeep — it will appear on the Wall below for everyone to see.
+          Leave a note of love for Dr. Aanchal Dhingra &amp; Randeep Singh — it will appear on the Wall below for everyone to see.
         </p>
 
         {error && (

@@ -81,7 +81,7 @@ export function Intro({ onEnter }: IntroProps) {
         <motion.div
           initial={{ y: 60, opacity: 0 }}
           animate={
-            isReveal ? { y: -(EH * 1.22), opacity: 1 } :
+            isReveal ? { y: -(EH * 0.95), opacity: 1 } :
             isOpen   ? { y: -(EH * 0.08), opacity: 0 } :
                        { y: 60, opacity: 0 }
           }
@@ -95,14 +95,14 @@ export function Intro({ onEnter }: IntroProps) {
             background: '#FEFCF8',
             border: '0.5px solid rgba(200,177,149,0.45)',
             borderRadius: '2px',
-            padding: '2rem 1.75rem',
+            padding: '1.5rem 1.25rem',
             textAlign: 'center',
             boxShadow: '0 16px 70px rgba(44,42,41,0.16), 0 2px 12px rgba(44,42,41,0.08)',
             zIndex: 20,
           }}
         >
           {/* Ornament */}
-          <p style={{ fontSize: '1.3rem', color: '#C8B195', marginBottom: '0.75rem', lineHeight: 1 }}>
+          <p style={{ fontSize: '1.3rem', color: '#C8B195', marginBottom: '0.5rem', lineHeight: 1 }}>
             ✦
           </p>
 
@@ -114,7 +114,7 @@ export function Intro({ onEnter }: IntroProps) {
             letterSpacing: '0.32em',
             textTransform: 'uppercase',
             color: '#C8B195',
-            marginBottom: '1rem',
+            marginBottom: '0.75rem',
           }}>
             You are cordially invited to the
           </p>
@@ -122,14 +122,14 @@ export function Intro({ onEnter }: IntroProps) {
           {/* Names */}
           <h2 style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(1.6rem, 5vw, 2.1rem)',
+            fontSize: 'clamp(1.4rem, 4vw, 1.8rem)',
             fontWeight: 300,
             fontStyle: 'italic',
             color: '#2C2A29',
             lineHeight: 1.1,
             marginBottom: 0,
           }}>
-            Aanchal
+            Dr. Aanchal Dhingra
           </h2>
           <p style={{
             fontFamily: 'var(--font-sans)',
@@ -137,20 +137,20 @@ export function Intro({ onEnter }: IntroProps) {
             fontWeight: 300,
             letterSpacing: '0.4em',
             color: '#C8B195',
-            margin: '0.35rem 0',
+            margin: '0.25rem 0',
           }}>
             &amp;
           </p>
           <h2 style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(1.6rem, 5vw, 2.1rem)',
+            fontSize: 'clamp(1.4rem, 4vw, 1.8rem)',
             fontWeight: 300,
             fontStyle: 'italic',
             color: '#2C2A29',
             lineHeight: 1.1,
-            marginBottom: '1rem',
+            marginBottom: '0.75rem',
           }}>
-            Randeep
+            Randeep Singh
           </h2>
 
           {/* Divider */}
@@ -158,9 +158,9 @@ export function Intro({ onEnter }: IntroProps) {
             width: 48,
             height: '0.5px',
             background: '#C8B195',
-            margin: '0 auto 1rem',
+            margin: '0 auto 0.75rem',
             opacity: 0.55,
-          }} />
+          }} division-line />
 
           {/* Event info */}
           <p style={{
@@ -180,10 +180,10 @@ export function Intro({ onEnter }: IntroProps) {
             fontWeight: 300,
             letterSpacing: '0.1em',
             color: '#C8B195',
-            marginBottom: '1.6rem',
+            marginBottom: '1.25rem',
             lineHeight: 1.6,
           }}>
-            21st August, 2026 &nbsp;·&nbsp; 7:00 PM<br />
+            21st August, 2026 &nbsp;·&nbsp; 7:00 PM Onwards<br />
             Golden Apple Mansion, Pritampura
           </p>
 
