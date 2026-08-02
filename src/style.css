@@ -601,17 +601,18 @@ img { display: block; max-width: 100%; }
 
 .footer-meta {
   font-family: var(--font-cinzel);
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--ivory-muted);
+  color: #FFF3F5;
+  opacity: 0.85;
 }
 
 .footer-sign {
   font-family: var(--font-dance);
   font-size: 1rem;
   font-style: italic;
-  color: rgba(255,194,14,0.65);
+  color: var(--gold-shine);
   margin-top: 0.5rem;
 }
 
