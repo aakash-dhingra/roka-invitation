@@ -151,7 +151,7 @@ export function InteractiveGoldDust() {
         inset: 0,
         width: '100%',
         height: '100%',
-        zIndex: 1, // behind contents but above dark background wrappers
+        zIndex: 9990, // Float over solid background sections
         pointerEvents: 'none',
       }}
     />
