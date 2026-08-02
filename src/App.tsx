@@ -45,12 +45,19 @@ export default function App() {
          ══════════════════════════════════════ */}
       <section id="hero" className="hero-section">
 
-        {/* Single beautiful painting fills the screen */}
-        <img
-          src="/couple-palace.png"
-          alt={`${brideName} and ${groomName}`}
+        {/* Full-bleed background video, falls back to the painting */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/couple-palace.png"
           className="hero-bg-scene"
-        />
+          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+          <img src="/couple-palace.png" alt={`${brideName} and ${groomName}`} />
+        </video>
 
         {/* Gradient: dark top for text readability, transparent middle, dark bottom */}
         <div className="hero-overlay" />
