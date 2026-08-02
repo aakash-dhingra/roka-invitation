@@ -1,5 +1,5 @@
 /* ============================================
-   DESIGN TOKENS
+   DESIGN TOKENS — FESTIVE WEDDING THEME
    ============================================ */
 :root {
   /* Fonts */
@@ -10,19 +10,19 @@
   --font-dance:  'Dancing Script', cursive;
 
   /* Palette */
-  --canvas:       #FAF0E6;       /* Ivory white */
-  --canvas-dark:  #1C0500;       /* Rich dark maroon-black */
-  --gold:         #C9952A;       /* Regal gold */
-  --gold-shine:   #F7DC6F;
-  --gold-dark:    #8B6914;
-  --gold-muted:   rgba(201, 149, 42, 0.35);
-  --maroon:       #880020;
-  --cream:        #FFF8EE;
-  --espresso:     #2A1505;
-  --espresso-mid: rgba(42, 21, 5, 0.75);
-  --espresso-soft:rgba(42, 21, 5, 0.48);
-  --ivory-text:   #FAF0E6;
-  --ivory-muted:  rgba(250, 240, 230, 0.72);
+  --canvas:       #FFF7EA;       /* Warm Saffron Cream */
+  --canvas-dark:  #7B0017;       /* Deep Royal Crimson */
+  --gold:         #FFC20E;       /* Bright Marigold Gold */
+  --gold-shine:   #FFE97F;
+  --gold-dark:    #D4AF37;       /* Festive Antique Gold */
+  --gold-muted:   rgba(212, 175, 55, 0.45);
+  --maroon:       #9E0A22;       /* Vibrant Crimson Red */
+  --cream:        #FFFDF9;       /* Crisp card ivory */
+  --espresso:     #4A020D;       /* Deep Burgundy text */
+  --espresso-mid: rgba(74, 2, 13, 0.78);
+  --espresso-soft:rgba(74, 2, 13, 0.48);
+  --ivory-text:   #FFF7EA;
+  --ivory-muted:  rgba(255, 247, 234, 0.75);
 
   --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -73,6 +73,12 @@ img { display: block; max-width: 100%; }
   50%      { transform: translateY(6px); }
 }
 
+@keyframes pulseGold {
+  0%   { box-shadow: 0 0 0 0 rgba(214, 175, 55, 0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(214, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(214, 175, 55, 0); }
+}
+
 /* ============================================
    SCROLL REVEAL
    ============================================ */
@@ -117,10 +123,10 @@ img { display: block; max-width: 100%; }
   inset: 0;
   z-index: 1;
   background: linear-gradient(to bottom,
-    rgba(28, 5, 0, 0.88) 0%,
-    rgba(28, 5, 0, 0.25) 35%,
-    rgba(28, 5, 0, 0.25) 65%,
-    rgba(28, 5, 0, 0.88) 100%
+    rgba(123, 0, 23, 0.9) 0%,
+    rgba(123, 0, 23, 0.3) 35%,
+    rgba(123, 0, 23, 0.3) 65%,
+    rgba(123, 0, 23, 0.9) 100%
   );
 }
 
@@ -135,7 +141,7 @@ img { display: block; max-width: 100%; }
 .hero-ceremony-label {
   font-family: var(--font-cinzel);
   font-size: clamp(0.6rem, 1.8vw, 0.75rem);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.45em;
   text-transform: uppercase;
   color: var(--gold);
@@ -148,7 +154,7 @@ img { display: block; max-width: 100%; }
   font-size: clamp(3.8rem, 12vw, 8rem);
   font-weight: 400;
   line-height: 1.05;
-  background: linear-gradient(90deg, #C9952A, #F7DC6F, #C9952A, #F7DC6F, #C9952A);
+  background: linear-gradient(90deg, var(--gold), var(--gold-shine), var(--gold), var(--gold-shine), var(--gold));
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -177,13 +183,13 @@ img { display: block; max-width: 100%; }
 
 .hero-amp {
   font-family: var(--font-cinzel);
-  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   color: var(--gold);
 }
 
 .hero-tagline {
   font-family: var(--font-dance);
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   font-style: italic;
   color: var(--ivory-muted);
   margin-top: 0.5rem;
@@ -237,7 +243,7 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================
-   SECTIONS
+   SECTIONS — VIBRANT PALETTE SWAP
    ============================================ */
 .section-ivory { background-color: var(--canvas); color: var(--espresso); }
 .section-dark  { background-color: var(--canvas-dark); color: var(--ivory-text); }
@@ -245,14 +251,14 @@ img { display: block; max-width: 100%; }
 .section-wrapper {
   max-width: 1000px;
   margin: 0 auto;
-  padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3.5rem);
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.25rem, 5vw, 3.5rem);
   text-align: center;
 }
 
 .section-eyebrow {
   font-family: var(--font-cinzel);
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 0.42em;
   text-transform: uppercase;
   color: var(--gold-dark);
@@ -273,7 +279,7 @@ img { display: block; max-width: 100%; }
    ============================================ */
 .story-section {
   position: relative;
-  background: radial-gradient(circle at center, rgba(136,0,32,0.15) 0%, rgba(28,5,0,0.98) 100%), var(--canvas-dark);
+  background: radial-gradient(circle at center, rgba(255,194,14,0.08) 0%, rgba(123,0,23,0.98) 100%), var(--canvas-dark);
 }
 
 .story-inner {
@@ -322,7 +328,6 @@ img { display: block; max-width: 100%; }
   height: 114%;
   object-fit: contain;
   pointer-events: none;
-  mix-blend-mode: multiply;
 }
 
 /* ============================================
@@ -343,10 +348,10 @@ img { display: block; max-width: 100%; }
 .countdown-number {
   font-family: var(--font-cinzel);
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--gold);
   line-height: 1;
-  text-shadow: 0 0 25px rgba(201, 149, 42, 0.45);
+  text-shadow: 0 0 25px rgba(255, 194, 14, 0.45);
 }
 
 .countdown-label {
@@ -364,26 +369,27 @@ img { display: block; max-width: 100%; }
    ============================================ */
 .detail-card {
   background: var(--cream);
-  border: 1px solid var(--gold-muted);
-  border-radius: 2px;
+  border: 1.5px solid var(--gold-muted);
+  border-radius: 4px;
   padding: 2rem 1.5rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(42,21,5,0.04);
+  box-shadow: 0 4px 15px rgba(74,2,13,0.06);
   transition: all 0.35s ease;
 }
 
 .detail-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201,149,42,0.15);
+  box-shadow: 0 8px 24px rgba(255,194,14,0.3);
+  border-color: var(--gold-dark);
 }
 
 .detail-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2.5px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
 }
 
 .detail-card-icon {
@@ -394,7 +400,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gold);
+  color: var(--gold-dark);
   margin: 0 auto 1rem;
 }
 
@@ -406,7 +412,8 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: 0.5rem;
   background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
-  color: #fff;
+  color: #4A020D;
+  font-weight: 700;
   border: none;
   padding: 0.8rem 2rem;
   font-family: var(--font-cinzel);
@@ -414,14 +421,14 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 1px;
+  border-radius: 2px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(201, 149, 42, 0.3);
+  box-shadow: 0 4px 14px rgba(255, 194, 14, 0.45);
   text-decoration: none;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 6px 22px rgba(201, 149, 42, 0.5);
+  box-shadow: 0 6px 22px rgba(255, 194, 14, 0.7);
   transform: translateY(-1px);
 }
 
@@ -430,21 +437,21 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: 0.5rem;
   background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold);
+  border: 1.5px solid var(--gold-dark);
+  color: var(--espresso);
   padding: 0.8rem 2rem;
   font-family: var(--font-cinzel);
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 1px;
+  border-radius: 2px;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .btn-outline:hover {
-  background: var(--gold);
+  background: var(--gold-dark);
   color: #fff;
 }
 
@@ -455,25 +462,25 @@ img { display: block; max-width: 100%; }
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--gold-muted);
+  border-bottom: 1.5px solid var(--gold-muted);
   padding: 0.75rem 0;
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: inherit;
   outline: none;
   transition: border-color 0.3s;
 }
 
 .form-field:focus {
-  border-bottom-color: var(--gold);
+  border-bottom-color: var(--gold-dark);
 }
 
 .form-label {
   font-family: var(--font-cinzel);
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-dark);
   display: block;
   margin-bottom: 0.3rem;
   text-align: left;
@@ -484,17 +491,18 @@ img { display: block; max-width: 100%; }
    ============================================ */
 .quiz-card {
   background: var(--cream);
-  border: 1px solid var(--gold-muted);
+  border: 1.5px solid var(--gold-muted);
   padding: 2.25rem 1.75rem;
-  border-radius: 2px;
+  border-radius: 4px;
   text-align: left;
+  box-shadow: 0 4px 15px rgba(74,2,13,0.06);
 }
 
 .quiz-option-btn {
   width: 100%;
   text-align: left;
   padding: 0.9rem 1.25rem;
-  border: 1px solid var(--gold-muted);
+  border: 1.5px solid var(--gold-muted);
   background: transparent;
   color: var(--espresso);
   font-family: var(--font-sans);
@@ -504,8 +512,8 @@ img { display: block; max-width: 100%; }
   transition: all 0.3s ease;
 }
 
-.quiz-option-btn:hover   { background: rgba(201,149,42,0.06); border-color: var(--gold); }
-.quiz-option-btn.correct { background: rgba(201,149,42,0.15); border-color: var(--gold); }
+.quiz-option-btn:hover   { background: rgba(255,194,14,0.08); border-color: var(--gold-dark); }
+.quiz-option-btn.correct { background: rgba(255,194,14,0.18); border-color: var(--gold-dark); }
 .quiz-option-btn.wrong   { background: rgba(180,0,30,0.06);   border-color: rgba(180,0,30,0.4); }
 
 /* ============================================
@@ -514,14 +522,15 @@ img { display: block; max-width: 100%; }
 .polaroid-card {
   background: var(--cream);
   padding: 0.85rem 0.85rem 1.5rem;
-  box-shadow: 0 4px 20px rgba(42,21,5,0.12);
+  box-shadow: 0 4px 20px rgba(74,2,13,0.12);
   transition: all 0.4s var(--ease-premium);
+  border: 1px solid var(--gold-muted);
 }
 
 .polaroid-tape {
   width: 36px;
   height: 10px;
-  background: rgba(201, 149, 42, 0.25);
+  background: rgba(255, 194, 14, 0.4);
   margin: 0 auto 0.75rem;
   border-radius: 1px;
 }
@@ -537,7 +546,7 @@ img { display: block; max-width: 100%; }
 .polaroid-author {
   font-family: var(--font-cinzel);
   font-size: 0.58rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold-dark);
@@ -565,9 +574,10 @@ img { display: block; max-width: 100%; }
    FOOTER
    ============================================ */
 .site-footer {
-  background: #0F0200;
+  background: #2A0106;
   padding: 3rem 2rem;
   text-align: center;
+  border-top: 3px solid var(--gold-dark);
 }
 
 .footer-divider-img {
@@ -594,9 +604,9 @@ img { display: block; max-width: 100%; }
 
 .footer-sign {
   font-family: var(--font-dance);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-style: italic;
-  color: rgba(201,149,42,0.55);
+  color: rgba(255,194,14,0.65);
   margin-top: 0.5rem;
 }
 

@@ -11,6 +11,9 @@ import { WallOfLove } from './components/WallOfLove';
 import { InteractiveGoldDust } from './components/InteractiveGoldDust';
 import { ScrollTextReveal } from './components/ScrollTextReveal';
 import { ScrollTimelineConnector } from './components/ScrollTimelineConnector';
+import { Garland } from './components/Garland';
+import { AudioPlayer } from './components/AudioPlayer';
+import { SwingingBells } from './components/SwingingBells';
 
 const {
   brideName,
@@ -31,7 +34,10 @@ const {
 export default function App() {
   return (
     <>
-      {/* ── Dynamic Particle Canvas (attracts/repels to cursor, responds to scroll speed) ── */}
+      {/* ── Background Music Player (Traditional Sitar/Flute Loop) ── */}
+      <AudioPlayer />
+
+      {/* ── Dynamic Particle Canvas (Attracts/repels to cursor, responds to scroll) ── */}
       <InteractiveGoldDust />
 
       {/* ── Scroll connector line on the right side of the screen ── */}
@@ -41,9 +47,11 @@ export default function App() {
       <PetalRain count={18} />
 
       {/* ══════════════════════════════════════
-           HERO — Full-bleed cinematic painting
+           HERO — Full-bleed cinematic painting with Swinging Bells
          ══════════════════════════════════════ */}
       <section id="hero" className="hero-section">
+        {/* Hanging golden temple bells */}
+        <SwingingBells />
 
         {/* Full-bleed background video, falls back to the painting */}
         <video
@@ -90,12 +98,13 @@ export default function App() {
       </section>
 
       {/* ══════════════════════════════════════
-           EVENT DETAILS
+           EVENT DETAILS — Saffron-cream backdrop with Marigold Garland
          ══════════════════════════════════════ */}
       <section className="section-ivory">
-        <GoldDivider />
+        {/* Decorative hanging marigold garland */}
+        <Garland />
         <ScrollReveal>
-          <div className="section-wrapper">
+          <div className="section-wrapper" style={{ paddingTop: '1.5rem' }}>
             <p className="section-eyebrow">When &amp; Where</p>
             <h2 className="section-heading">
               <ScrollTextReveal text="Event Details" />
@@ -116,7 +125,7 @@ export default function App() {
       </section>
 
       {/* ══════════════════════════════════════
-           COUPLE STORY — dark, palace gate bg
+           COUPLE STORY — Crimson Red
          ══════════════════════════════════════ */}
       <section className="section-dark story-section">
         <ScrollReveal>
@@ -143,12 +152,12 @@ export default function App() {
       </section>
 
       {/* ══════════════════════════════════════
-           QUIZ
+           QUIZ — Saffron-cream backdrop with Marigold Garland
          ══════════════════════════════════════ */}
       <section className="section-ivory">
-        <GoldDivider />
+        <Garland />
         <ScrollReveal>
-          <div className="section-wrapper">
+          <div className="section-wrapper" style={{ paddingTop: '1.5rem' }}>
             <p className="section-eyebrow">How Well Do You Know Them?</p>
             <h2 className="section-heading">
               <ScrollTextReveal text="Couple Quiz" />
@@ -160,7 +169,7 @@ export default function App() {
       </section>
 
       {/* ══════════════════════════════════════
-           RSVP
+           RSVP — Crimson Red
          ══════════════════════════════════════ */}
       <section className="section-dark">
         <ScrollReveal>
@@ -174,12 +183,12 @@ export default function App() {
       </section>
 
       {/* ══════════════════════════════════════
-           WALL OF LOVE
+           WALL OF LOVE — Saffron-cream backdrop with Marigold Garland
          ══════════════════════════════════════ */}
       <section className="section-ivory">
-        <GoldDivider />
+        <Garland />
         <ScrollReveal>
-          <div className="section-wrapper">
+          <div className="section-wrapper" style={{ paddingTop: '1.5rem' }}>
             <p className="section-eyebrow">Spread the Love</p>
             <h2 className="section-heading">
               <ScrollTextReveal text="Wall of Love" />
