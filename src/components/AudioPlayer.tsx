@@ -11,16 +11,25 @@ export function AudioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Initialize audio element with looping enabled
-    audioRef.current = new Audio(AMBIENT_LOOP_URL);
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.55;
+    // Initialize audio element
+    const audio = new Audio(AMBIENT_LOOP_URL);
+    audio.loop = false; // looping handled manually to preserve the 20s offset
+    audio.volume = 0.55;
+    audio.currentTime = 20; // Skip first 20 seconds!
+
+    // Handle loop manually so it resets to the 20s offset
+    const handleEnded = () => {
+      audio.currentTime = 20;
+      audio.play().catch(err => console.warn('Audio play failed on loop ended', err));
+    };
+
+    audio.addEventListener('ended', handleEnded);
+    audioRef.current = audio;
 
     return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
+      audio.removeEventListener('ended', handleEnded);
+      audio.pause();
+      audioRef.current = null;
     };
   }, []);
 
