@@ -184,7 +184,7 @@ export function Intro({ onEnter }: IntroProps) {
             lineHeight: 1.6,
           }}>
             21st August, 2026 &nbsp;·&nbsp; 7:00 PM Onwards<br />
-            Golden Apple Mansion, Pritampura
+            Golden Apple Mansion, Pitampura
           </p>
 
           {/* CTA button */}

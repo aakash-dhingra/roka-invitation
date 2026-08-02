@@ -224,7 +224,7 @@ export default function App() {
       <footer className="site-footer">
         <img src="/gold-divider.png" alt="" aria-hidden="true" className="footer-divider-img" />
         <p className="footer-names">{brideName} &amp; {groomName}</p>
-        <p className="footer-meta">21st August 2026 &nbsp;·&nbsp; Golden Apple Mansion, Pritampura</p>
+        <p className="footer-meta">21st August 2026 &nbsp;·&nbsp; Golden Apple Mansion, Pitampura</p>
         <p className="footer-sign">With love &amp; blessings ✦</p>
       </footer>
     </>

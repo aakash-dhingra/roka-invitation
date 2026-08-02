@@ -20,7 +20,7 @@ export const EVENT_CONFIG = {
 
   // Venue
   venueName: "Golden Apple Mansion",
-  venueAddress: "Pritampura, New Delhi",
+  venueAddress: "Pitampura, New Delhi",
   googleMapsUrl: "https://maps.app.goo.gl/siggsayemhoUtaWo6",
 
   // RSVP Contact

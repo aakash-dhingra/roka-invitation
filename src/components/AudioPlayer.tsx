@@ -13,13 +13,13 @@ export function AudioPlayer() {
   useEffect(() => {
     // Initialize audio element
     const audio = new Audio(AMBIENT_LOOP_URL);
-    audio.loop = false; // looping handled manually to preserve the 20s offset
+    audio.loop = false; // looping handled manually to preserve the 34s offset
     audio.volume = 0.55;
-    audio.currentTime = 20; // Skip first 20 seconds!
+    audio.currentTime = 34; // Skip first 34 seconds!
 
-    // Handle loop manually so it resets to the 20s offset
+    // Handle loop manually so it resets to the 34s offset
     const handleEnded = () => {
-      audio.currentTime = 20;
+      audio.currentTime = 34;
       audio.play().catch(err => console.warn('Audio play failed on loop ended', err));
     };
 
