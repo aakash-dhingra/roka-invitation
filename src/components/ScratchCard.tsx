@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, ReactNode } from 'react';
 import { motion } from 'framer-motion';
+import { BalloonShower } from './BalloonShower';
 
 interface ScratchCardProps {
   children: ReactNode;
@@ -15,6 +16,7 @@ export function ScratchCard({
   const wrapperRef  = useRef<HTMLDivElement>(null);
   const canvasRef   = useRef<HTMLCanvasElement>(null);
   const [revealed, setRevealed] = useState(false);
+  const [showBalloons, setShowBalloons] = useState(false);
   const [hinted, setHinted]     = useState(false); // subtle hint on hover before scratching
   const isDrawing   = useRef(false);
   const autoCleared = useRef(false);
@@ -107,7 +109,10 @@ export function ScratchCard({
       // Clear entire overlay cleanly
       ctx.globalCompositeOperation = 'destination-out';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      setTimeout(() => setRevealed(true), 80);
+      setTimeout(() => {
+        setRevealed(true);
+        setShowBalloons(true);
+      }, 80);
     }
   }
 
@@ -209,6 +214,9 @@ export function ScratchCard({
           ✦
         </motion.div>
       )}
+
+      {/* Floating pink balloon shower */}
+      <BalloonShower trigger={showBalloons} />
     </div>
   );
 }
