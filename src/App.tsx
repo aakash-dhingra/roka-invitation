@@ -38,9 +38,6 @@ export default function App() {
       {/* ── Background Music Player (Traditional Sitar/Flute Loop) ── */}
       <AudioPlayer />
 
-      {/* ── Interactive Punjabi Dhol Player (beats faster on cursor speed / scroll speed) ── */}
-      <DholPlayer />
-
       {/* ── Dynamic Particle Canvas (Attracts/repels to cursor, responds to scroll) ── */}
       <InteractiveGoldDust />
 
@@ -129,7 +126,7 @@ export default function App() {
       </section>
 
       {/* ══════════════════════════════════════
-           COUPLE STORY — Crimson Red
+           COUPLE STORY — Crimson Red with Dhol Player
          ══════════════════════════════════════ */}
       <section className="section-dark story-section">
         <ScrollReveal>
@@ -146,6 +143,9 @@ export default function App() {
                 blessings, and new beginnings.
               </p>
               <p className="story-quote">"Some things are simply meant to be."</p>
+
+              {/* Dhol Player embedded here, swinging on scroll */}
+              <DholPlayer isFloating={false} />
             </div>
             <div className="story-img-frame">
               <img src="/couple-palace.png" alt="Aanchal and Randeep at the palace" className="story-img" />
