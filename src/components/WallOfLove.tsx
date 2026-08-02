@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Send, RefreshCw } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 
 interface Message {
   id: number;
@@ -237,39 +238,35 @@ export function WallOfLove() {
 }
 
 function PolaroidCard({ message, animDelay }: { message: Message; animDelay: number }) {
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <div
-      className="polaroid-card"
-      style={{
-        transform: hovered
-          ? `rotate(${message.rotation > 0 ? message.rotation + 1.5 : message.rotation - 1.5}deg) translateY(-6px)`
-          : `rotate(${message.rotation}deg)`,
-        animationDelay: `${animDelay}ms`,
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div className="polaroid-tape" />
-      {/* Faux photo area */}
+    <TiltCard>
       <div
+        className="polaroid-card"
         style={{
-          width: '100%',
-          height: '90px',
-          background: 'linear-gradient(135deg, rgba(200,177,149,0.15) 0%, rgba(247,244,239,0.8) 100%)',
-          marginBottom: '1rem',
-          borderRadius: '1px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '1.75rem',
+          transform: `rotate(${message.rotation}deg)`,
+          animationDelay: `${animDelay}ms`,
         }}
       >
-        ♡
+        <div className="polaroid-tape" />
+        {/* Faux photo area */}
+        <div
+          style={{
+            width: '100%',
+            height: '90px',
+            background: 'linear-gradient(135deg, rgba(200,177,149,0.15) 0%, rgba(247,244,239,0.8) 100%)',
+            marginBottom: '1rem',
+            borderRadius: '1px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '1.75rem',
+          }}
+        >
+          ♡
+        </div>
+        <p className="polaroid-message">"{message.text}"</p>
+        <p className="polaroid-author">— {message.name}</p>
       </div>
-      <p className="polaroid-message">"{message.text}"</p>
-      <p className="polaroid-author">— {message.name}</p>
-    </div>
+    </TiltCard>
   );
 }

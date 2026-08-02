@@ -8,6 +8,9 @@ import { QuizSection } from './components/QuizSection';
 import { EventDetailsSection } from './components/EventDetails';
 import { RSVPForm } from './components/RSVPForm';
 import { WallOfLove } from './components/WallOfLove';
+import { InteractiveGoldDust } from './components/InteractiveGoldDust';
+import { ScrollTextReveal } from './components/ScrollTextReveal';
+import { ScrollTimelineConnector } from './components/ScrollTimelineConnector';
 
 const {
   brideName,
@@ -28,6 +31,13 @@ const {
 export default function App() {
   return (
     <>
+      {/* ── Dynamic Particle Canvas (attracts/repels to cursor, responds to scroll speed) ── */}
+      <InteractiveGoldDust />
+
+      {/* ── Scroll connector line on the right side of the screen ── */}
+      <ScrollTimelineConnector />
+
+      {/* ── Rose petals falling in 3D ── */}
       <PetalRain count={18} />
 
       {/* ══════════════════════════════════════
@@ -80,7 +90,9 @@ export default function App() {
         <ScrollReveal>
           <div className="section-wrapper">
             <p className="section-eyebrow">When &amp; Where</p>
-            <h2 className="section-heading">Event Details</h2>
+            <h2 className="section-heading">
+              <ScrollTextReveal text="Event Details" />
+            </h2>
             <EventDetailsSection
               displayDate={displayDate}
               displayDay={displayDay}
@@ -131,7 +143,9 @@ export default function App() {
         <ScrollReveal>
           <div className="section-wrapper">
             <p className="section-eyebrow">How Well Do You Know Them?</p>
-            <h2 className="section-heading">Couple Quiz</h2>
+            <h2 className="section-heading">
+              <ScrollTextReveal text="Couple Quiz" />
+            </h2>
             <QuizSection questions={quizQuestions} brideName={brideName} groomName={groomName} />
           </div>
         </ScrollReveal>
@@ -160,7 +174,9 @@ export default function App() {
         <ScrollReveal>
           <div className="section-wrapper">
             <p className="section-eyebrow">Spread the Love</p>
-            <h2 className="section-heading">Wall of Love</h2>
+            <h2 className="section-heading">
+              <ScrollTextReveal text="Wall of Love" />
+            </h2>
             <p className="wall-subtitle">Pin your blessings for {brideName} &amp; {groomName}.</p>
             <WallOfLove />
           </div>

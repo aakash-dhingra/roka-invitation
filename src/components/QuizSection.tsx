@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ScrollReveal } from './ScrollReveal';
 import type { Question } from '../config';
+import { TiltCard } from './TiltCard';
 
 interface QuizSectionProps {
   questions: Question[];
@@ -109,76 +110,78 @@ export function QuizSection({ questions, brideName, groomName }: QuizSectionProp
   }
 
   return (
-    <div>
-      {/* Progress dots */}
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem' }}>
-        {questions.map((_, i) => (
-          <div
-            key={i}
-            className={`quiz-progress-dot ${
-              i < currentQ ? 'done' : i === currentQ ? 'active' : ''
-            }`}
-          />
-        ))}
-      </div>
-
-      <p
-        style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: '0.65rem',
-          letterSpacing: '0.25em',
-          color: 'var(--taupe)',
-          fontWeight: 600,
-          textTransform: 'uppercase',
-          marginBottom: '1rem',
-        }}
-      >
-        Question {currentQ + 1} of {questions.length}
-      </p>
-
-      <h3
-        style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: 'clamp(1.25rem, 2.5vw, 1.7rem)',
-          fontWeight: 400,
-          color: 'var(--espresso)',
-          lineHeight: 1.35,
-          marginBottom: '1.75rem',
-        }}
-      >
-        {question.question}
-      </h3>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-        {question.options.map((option, i) => {
-          let btnClass = 'quiz-option-btn';
-          if (selected !== null) {
-            if (i === question.correctIndex) btnClass += ' correct';
-            else if (i === selected && selected !== question.correctIndex)
-              btnClass += ' incorrect';
-          }
-          return (
-            <button
+    <TiltCard>
+      <div className="quiz-card">
+        {/* Progress dots */}
+        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem' }}>
+          {questions.map((_, i) => (
+            <div
               key={i}
-              id={`quiz-option-${currentQ}-${i}`}
-              className={btnClass}
-              onClick={() => handleSelect(i)}
-            >
-              <span
-                style={{
-                  opacity: 0.4,
-                  marginRight: '0.75rem',
-                  fontFamily: 'var(--font-serif)',
-                  fontStyle: 'italic',
-                }}
+              className={`quiz-progress-dot ${
+                i < currentQ ? 'done' : i === currentQ ? 'active' : ''
+              }`}
+            />
+          ))}
+        </div>
+
+        <p
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: '0.65rem',
+            letterSpacing: '0.25em',
+            color: 'var(--taupe)',
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            marginBottom: '1rem',
+          }}
+        >
+          Question {currentQ + 1} of {questions.length}
+        </p>
+
+        <h3
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(1.25rem, 2.5vw, 1.7rem)',
+            fontWeight: 400,
+            color: 'var(--espresso)',
+            lineHeight: 1.35,
+            marginBottom: '1.75rem',
+          }}
+        >
+          {question.question}
+        </h3>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+          {question.options.map((option, i) => {
+            let btnClass = 'quiz-option-btn';
+            if (selected !== null) {
+              if (i === question.correctIndex) btnClass += ' correct';
+              else if (i === selected && selected !== question.correctIndex)
+                btnClass += ' incorrect';
+            }
+            return (
+              <button
+                key={i}
+                id={`quiz-option-${currentQ}-${i}`}
+                className={btnClass}
+                onClick={() => handleSelect(i)}
               >
-                {String.fromCharCode(65 + i)}.
-              </span>
-              {option}
-            </button>
-          );
-        })}
+                <span
+                  style={{
+                    opacity: 0.4,
+                    marginRight: '0.75rem',
+                    fontFamily: 'var(--font-serif)',
+                    fontStyle: 'italic',
+                  }}
+                >
+                  {String.fromCharCode(65 + i)}.
+                </span>
+                {option}
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </TiltCard>
   );
 }

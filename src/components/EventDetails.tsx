@@ -1,5 +1,6 @@
 import { Calendar, MapPin, Clock } from 'lucide-react';
 import { ScratchCard } from './ScratchCard';
+import { TiltCard } from './TiltCard';
 
 interface EventDetailsSectionProps {
   displayDate: string;
@@ -115,92 +116,96 @@ export function EventDetailsSection(props: EventDetailsSectionProps) {
           </div>
         </ScratchCard>
 
-        {/* Time card */}
-        <div className="detail-card">
-          <div className="detail-card-icon">
-            <Clock size={16} strokeWidth={1.25} />
+        {/* Time card wrapped in TiltCard */}
+        <TiltCard>
+          <div className="detail-card" style={{ height: '100%' }}>
+            <div className="detail-card-icon">
+              <Clock size={16} strokeWidth={1.25} />
+            </div>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.6rem',
+                fontWeight: 600,
+                letterSpacing: '0.25em',
+                textTransform: 'uppercase',
+                color: 'var(--taupe)',
+                marginBottom: '0.5rem',
+              }}
+            >
+              Time
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.35rem',
+                fontWeight: 400,
+                color: 'var(--espresso)',
+                lineHeight: 1.3,
+                marginBottom: '0.25rem',
+              }}
+            >
+              {startTime}
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.7rem',
+                fontWeight: 300,
+                color: 'var(--espresso-mid)',
+                letterSpacing: '0.1em',
+              }}
+            >
+              Until {endTime}
+            </p>
           </div>
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.6rem',
-              fontWeight: 600,
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-              color: 'var(--taupe)',
-              marginBottom: '0.5rem',
-            }}
-          >
-            Time
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: '1.35rem',
-              fontWeight: 400,
-              color: 'var(--espresso)',
-              lineHeight: 1.3,
-              marginBottom: '0.25rem',
-            }}
-          >
-            {startTime}
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.7rem',
-              fontWeight: 300,
-              color: 'var(--espresso-mid)',
-              letterSpacing: '0.1em',
-            }}
-          >
-            Until {endTime}
-          </p>
-        </div>
+        </TiltCard>
 
-        {/* Venue card */}
-        <div className="detail-card">
-          <div className="detail-card-icon">
-            <MapPin size={16} strokeWidth={1.25} />
+        {/* Venue card wrapped in TiltCard */}
+        <TiltCard>
+          <div className="detail-card" style={{ height: '100%' }}>
+            <div className="detail-card-icon">
+              <MapPin size={16} strokeWidth={1.25} />
+            </div>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.6rem',
+                fontWeight: 600,
+                letterSpacing: '0.25em',
+                textTransform: 'uppercase',
+                color: 'var(--taupe)',
+                marginBottom: '0.5rem',
+              }}
+            >
+              Venue
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.35rem',
+                fontWeight: 400,
+                color: 'var(--espresso)',
+                lineHeight: 1.3,
+                marginBottom: '0.25rem',
+              }}
+            >
+              {venueName}
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.7rem',
+                fontWeight: 300,
+                color: 'var(--espresso-mid)',
+                letterSpacing: '0.05em',
+                lineHeight: 1.55,
+              }}
+            >
+              {venueAddress}
+            </p>
           </div>
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.6rem',
-              fontWeight: 600,
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-              color: 'var(--taupe)',
-              marginBottom: '0.5rem',
-            }}
-          >
-            Venue
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: '1.35rem',
-              fontWeight: 400,
-              color: 'var(--espresso)',
-              lineHeight: 1.3,
-              marginBottom: '0.25rem',
-            }}
-          >
-            {venueName}
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.7rem',
-              fontWeight: 300,
-              color: 'var(--espresso-mid)',
-              letterSpacing: '0.05em',
-              lineHeight: 1.55,
-            }}
-          >
-            {venueAddress}
-          </p>
-        </div>
+        </TiltCard>
       </div>
 
       {/* Action buttons */}
