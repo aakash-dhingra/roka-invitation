@@ -151,9 +151,11 @@ img { display: block; max-width: 100%; }
 
 .hero-bride-name, .hero-groom-name {
   font-family: var(--font-script) !important;
-  font-size: clamp(3.8rem, 12vw, 8rem);
+  font-size: clamp(2.8rem, 9vw, 6.2rem);
   font-weight: 400;
   line-height: 1.05;
+  padding: 0.1em 0.25em;
+  margin: 0 -0.25em;
   background: linear-gradient(90deg, var(--gold), var(--gold-shine), var(--gold), var(--gold-shine), var(--gold));
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -161,6 +163,7 @@ img { display: block; max-width: 100%; }
   background-clip: text;
   animation: goldShimmer 5s linear infinite;
   display: inline-block;
+  overflow: visible;
 }
 
 .hero-bride-name { animation: goldShimmer 5s linear infinite, slideUpFade 1.2s var(--ease-premium) 0.2s both; }

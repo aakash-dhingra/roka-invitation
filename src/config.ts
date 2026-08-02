@@ -4,8 +4,8 @@
 
 export const EVENT_CONFIG = {
   // Couple
-  brideName: "Dr. Aanchal Dhingra",
-  groomName: "Randeep Singh",
+  brideName: "Aanchal",
+  groomName: "Randeep",
   brideFullName: "Dr. Aanchal Dhingra",
   groomFullName: "Randeep Singh",
   tagline: "A beautiful beginning",
