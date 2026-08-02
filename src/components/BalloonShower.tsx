@@ -22,14 +22,14 @@ const BALLOON_COLORS = [
 export function BalloonShower({ trigger }: { trigger: boolean }) {
   const balloons = useMemo<Balloon[]>(() => {
     if (!trigger) return [];
-    return Array.from({ length: 30 }, (_, i) => ({
+    return Array.from({ length: 85 }, (_, i) => ({
       id: i,
-      left: Math.random() * 90 + 5, // Keep within viewport margins
-      size: Math.round(40 + Math.random() * 45), // Width in pixels
-      duration: 3.5 + Math.random() * 2.5, // Time to float up (seconds)
-      delay: Math.random() * 0.8, // Staggered start times
+      left: Math.random() * 92 + 4, 
+      size: Math.round(30 + Math.random() * 45), 
+      duration: 3.0 + Math.random() * 3.5, 
+      delay: Math.random() * 1.8, 
       color: BALLOON_COLORS[i % BALLOON_COLORS.length],
-      sway: Math.round(30 + Math.random() * 50), // Sway amplitude
+      sway: Math.round(40 + Math.random() * 60), 
     }));
   }, [trigger]);
 
