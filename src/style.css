@@ -10,19 +10,19 @@
   --font-dance:  'Dancing Script', cursive;
 
   /* Palette */
-  --canvas:       #FFF7EA;       /* Warm Saffron Cream */
-  --canvas-dark:  #7B0017;       /* Deep Royal Crimson */
-  --gold:         #FFC20E;       /* Bright Marigold Gold */
-  --gold-shine:   #FFE97F;
-  --gold-dark:    #D4AF37;       /* Festive Antique Gold */
-  --gold-muted:   rgba(212, 175, 55, 0.45);
-  --maroon:       #9E0A22;       /* Vibrant Crimson Red */
-  --cream:        #FFFDF9;       /* Crisp card ivory */
-  --espresso:     #4A020D;       /* Deep Burgundy text */
-  --espresso-mid: rgba(74, 2, 13, 0.78);
-  --espresso-soft:rgba(74, 2, 13, 0.48);
-  --ivory-text:   #FFF7EA;
-  --ivory-muted:  rgba(255, 247, 234, 0.75);
+  --canvas:       #FFF3F5;       /* Light Blush Pink */
+  --canvas-dark:  #FFD1DC;       /* Pastel Rose Pink */
+  --gold:         #D4AF37;       /* Elegant Antique Gold */
+  --gold-shine:   #FFE699;
+  --gold-dark:    #997300;       /* High Contrast Gold */
+  --gold-muted:   rgba(212, 175, 55, 0.35);
+  --maroon:       #E08599;       /* Soft Rose Gold Accent */
+  --cream:        #FFFFFF;       /* Crisp white cards */
+  --espresso:     #5C1D2A;       /* Deep Berry text */
+  --espresso-mid: rgba(92, 29, 42, 0.75);
+  --espresso-soft:rgba(92, 29, 42, 0.45);
+  --ivory-text:   #5C1D2A;       /* High contrast berry text for light sections */
+  --ivory-muted:  rgba(92, 29, 42, 0.7);
 
   --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -123,10 +123,10 @@ img { display: block; max-width: 100%; }
   inset: 0;
   z-index: 1;
   background: linear-gradient(to bottom,
-    rgba(123, 0, 23, 0.9) 0%,
-    rgba(123, 0, 23, 0.3) 35%,
-    rgba(123, 0, 23, 0.3) 65%,
-    rgba(123, 0, 23, 0.9) 100%
+    rgba(255, 209, 220, 0.94) 0%,
+    rgba(255, 209, 220, 0.45) 35%,
+    rgba(255, 209, 220, 0.45) 65%,
+    rgba(255, 209, 220, 0.94) 100%
   );
 }
 
@@ -165,6 +165,7 @@ img { display: block; max-width: 100%; }
   display: inline-block;
   overflow: visible;
   white-space: nowrap;
+  filter: drop-shadow(0 2px 8px rgba(92, 29, 42, 0.28));
 }
 
 .hero-bride-name { animation: goldShimmer 5s linear infinite, slideUpFade 1.2s var(--ease-premium) 0.2s both; }
@@ -283,7 +284,7 @@ img { display: block; max-width: 100%; }
    ============================================ */
 .story-section {
   position: relative;
-  background: radial-gradient(circle at center, rgba(255,194,14,0.08) 0%, rgba(123,0,23,0.98) 100%), var(--canvas-dark);
+  background: radial-gradient(circle at center, rgba(212,175,55,0.08) 0%, rgba(255,209,220,0.95) 100%), var(--canvas-dark);
 }
 
 .story-inner {
@@ -578,7 +579,7 @@ img { display: block; max-width: 100%; }
    FOOTER
    ============================================ */
 .site-footer {
-  background: #2A0106;
+  background: #4A1521;
   padding: 3rem 2rem;
   text-align: center;
   border-top: 3px solid var(--gold-dark);
