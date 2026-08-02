@@ -73,6 +73,22 @@ export default function App() {
 
         {/* Text — top center */}
         <div className="hero-content">
+          <p
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(0.85rem, 2vw, 1.05rem)',
+              color: 'var(--gold-shine)',
+              fontStyle: 'italic',
+              marginBottom: '1rem',
+              letterSpacing: '0.05em',
+              lineHeight: 1.4,
+              opacity: 0.9,
+            }}
+          >
+            With the blessings of<br />
+            <strong>Shree Sardari Lal Dhingra</strong> &amp; <strong>Shri Mati Santosh Kumari</strong>
+          </p>
+
           <p className="hero-ceremony-label">✦ &nbsp; Roka Ceremony &nbsp; ✦</p>
 
           <h1 className="hero-bride-name">{brideName}</h1>
