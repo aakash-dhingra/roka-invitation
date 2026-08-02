@@ -1,6 +1,5 @@
 import './style.css';
 import { EVENT_CONFIG } from './config';
-import { LeafAccents } from './components/LeafAccents';
 import { PetalRain } from './components/PetalRain';
 import { GoldDivider } from './components/GoldDivider';
 import { CountdownTimer } from './components/CountdownTimer';
@@ -29,108 +28,59 @@ const {
 export default function App() {
   return (
     <>
-      <PetalRain count={22} />
-      <LeafAccents />
+      <PetalRain count={18} />
 
       {/* ══════════════════════════════════════
-           HERO — Cinematic Palace Scene
+           HERO — Full-bleed cinematic painting
          ══════════════════════════════════════ */}
       <section id="hero" className="hero-section">
 
-        {/* Layer 1 — Palace gate background, slow Ken Burns zoom */}
+        {/* Single beautiful painting fills the screen */}
         <img
-          src="/palace-gate.png"
-          alt=""
-          aria-hidden="true"
-          className="hero-palace-bg"
+          src="/couple-palace.png"
+          alt={`${brideName} and ${groomName}`}
+          className="hero-bg-scene"
         />
 
-        {/* Layer 2 — Gradient overlays for text readability */}
-        <div className="hero-gradient-overlay" />
+        {/* Gradient: dark top for text readability, transparent middle, dark bottom */}
+        <div className="hero-overlay" />
 
-        {/* Layer 3 — Couple emerging animation */}
-        <div className="hero-couple-wrapper">
-          <img
-            src="/couple-palace.png"
-            alt={`${brideName} and ${groomName}`}
-            className="hero-couple-img"
-          />
-        </div>
-
-        {/* Layer 4 — Text content */}
+        {/* Text — top center */}
         <div className="hero-content">
           <p className="hero-ceremony-label">✦ &nbsp; Roka Ceremony &nbsp; ✦</p>
 
-          <h1 className="hero-couple-names hero-name-bride">{brideName}</h1>
+          <h1 className="hero-bride-name">{brideName}</h1>
 
-          <div className="hero-ampersand-row">
-            <span className="hero-line" />
-            <span className="hero-ampersand">&amp;</span>
-            <span className="hero-line" />
+          <div className="hero-amp-row">
+            <span className="hero-amp-line" />
+            <span className="hero-amp">&amp;</span>
+            <span className="hero-amp-line" />
           </div>
 
-          <h1 className="hero-couple-names hero-name-groom">{groomName}</h1>
+          <h1 className="hero-groom-name">{groomName}</h1>
 
           <p className="hero-tagline">{tagline}</p>
-
-          <div className="hero-countdown-wrap">
-            <CountdownTimer eventDate={eventDate} />
-          </div>
-
-          {/* Scroll cue */}
-          <div className="hero-scroll-cue">
-            <div className="hero-scroll-line" />
-            <span className="hero-scroll-text">Scroll to Explore</span>
-          </div>
         </div>
 
-        {/* Bottom floral strip */}
-        <img src="/floral-border.png" alt="" aria-hidden="true" className="hero-floral-strip" />
-      </section>
-
-      {/* ══════════════════════════════════════
-           THEIR STORY — Dark
-         ══════════════════════════════════════ */}
-      <section className="section-dark">
-        <GoldDivider opacity={0.6} />
-        <ScrollReveal>
-          <div className="section-wrapper story-grid">
-            {/* Left: text */}
-            <div className="story-text">
-              <p className="section-label">✦ Their Story</p>
-              <h2 className="section-title story-heading">
-                A Beautiful<br /><em>Beginning</em>
-              </h2>
-              <p className="story-body">
-                Two hearts, one beautiful journey. Join us as{' '}
-                <strong style={{ color: 'var(--gold)' }}>{brideName} and {groomName}</strong> take
-                their first step towards forever — a moment filled with love,
-                blessings, and new beginnings.
-              </p>
-              <p className="story-body" style={{ marginTop: '1rem', fontStyle: 'italic' }}>
-                "Some things are simply meant to be."
-              </p>
-            </div>
-            {/* Right: couple image in ornate frame */}
-            <div className="story-image-wrap">
-              <img src="/floral-frame.png" alt="" aria-hidden="true" className="story-floral-frame" />
-              <img src="/couple-palace.png" alt="Aanchal and Randeep" className="story-couple-photo" />
-            </div>
+        {/* Countdown — bottom center */}
+        <div className="hero-bottom">
+          <CountdownTimer eventDate={eventDate} />
+          <div className="hero-scroll-cue">
+            <div className="hero-scroll-line" />
+            <span className="hero-scroll-label">Scroll to Explore</span>
           </div>
-        </ScrollReveal>
-        <GoldDivider flip opacity={0.6} />
+        </div>
       </section>
 
       {/* ══════════════════════════════════════
-           EVENT DETAILS — Light Ivory
+           EVENT DETAILS
          ══════════════════════════════════════ */}
-      <section className="section-light">
+      <section className="section-ivory">
+        <GoldDivider />
         <ScrollReveal>
           <div className="section-wrapper">
-            <p className="section-label" style={{ color: 'var(--gold-dark)' }}>✦ When &amp; Where</p>
-            <h2 className="section-title" style={{ fontSize: 'clamp(2rem,4vw,3rem)', marginBottom: '2rem' }}>
-              Event Details
-            </h2>
+            <p className="section-eyebrow">When &amp; Where</p>
+            <h2 className="section-heading">Event Details</h2>
             <EventDetailsSection
               displayDate={displayDate}
               displayDay={displayDay}
@@ -143,61 +93,75 @@ export default function App() {
             />
           </div>
         </ScrollReveal>
+        <GoldDivider flip />
       </section>
 
       {/* ══════════════════════════════════════
-           QUIZ — Dark
+           COUPLE STORY — dark, palace gate bg
          ══════════════════════════════════════ */}
-      <section className="section-dark">
-        <GoldDivider opacity={0.6} />
+      <section className="section-dark story-section">
+        <ScrollReveal>
+          <div className="section-wrapper story-inner">
+            <div>
+              <p className="section-eyebrow" style={{ color: 'var(--gold)' }}>Their Story</p>
+              <h2 className="section-heading" style={{ color: 'var(--ivory-text)', fontSize: 'clamp(2.2rem,5vw,3.8rem)' }}>
+                A Beautiful<br /><em style={{ color: 'var(--gold)' }}>Beginning</em>
+              </h2>
+              <p className="story-body">
+                Two hearts, one beautiful journey. Join us as{' '}
+                <strong style={{ color: 'var(--gold)' }}>{brideName} and {groomName}</strong>{' '}
+                take their first step towards forever — a moment filled with love,
+                blessings, and new beginnings.
+              </p>
+              <p className="story-quote">"Some things are simply meant to be."</p>
+            </div>
+            <div className="story-img-frame">
+              <img src="/couple-palace.png" alt="Aanchal and Randeep at the palace" className="story-img" />
+              <img src="/floral-frame.png" alt="" aria-hidden="true" className="story-frame-overlay" />
+            </div>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ══════════════════════════════════════
+           QUIZ
+         ══════════════════════════════════════ */}
+      <section className="section-ivory">
+        <GoldDivider />
         <ScrollReveal>
           <div className="section-wrapper">
-            <p className="section-label">✦ How Well Do You Know Them?</p>
-            <h2 className="section-title" style={{ color: 'var(--ivory-text)', fontSize: 'clamp(2rem,4vw,3rem)', marginBottom: '2rem' }}>
-              The Couple Quiz
-            </h2>
+            <p className="section-eyebrow">How Well Do You Know Them?</p>
+            <h2 className="section-heading">Couple Quiz</h2>
             <QuizSection questions={quizQuestions} brideName={brideName} groomName={groomName} />
           </div>
         </ScrollReveal>
-        <GoldDivider flip opacity={0.6} />
+        <GoldDivider flip />
       </section>
 
       {/* ══════════════════════════════════════
-           RSVP — Light Ivory
+           RSVP
          ══════════════════════════════════════ */}
-      <section className="section-light">
+      <section className="section-dark">
         <ScrollReveal>
           <div className="section-wrapper">
-            <p className="section-label" style={{ color: 'var(--gold-dark)' }}>✦ Will You Join Us?</p>
-            <h2 className="section-title" style={{ fontSize: 'clamp(2rem,4vw,3rem)', marginBottom: '0.5rem' }}>
-              RSVP
-            </h2>
-            <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--espresso-mid)', marginBottom: '2rem' }}>
-              Kindly respond by {rsvpDeadline}.
-            </p>
-            <RSVPForm
-              brideName={brideName}
-              groomName={groomName}
-              rsvpDeadline={rsvpDeadline}
-            />
+            <p className="section-eyebrow" style={{ color: 'var(--gold)' }}>Will You Join Us?</p>
+            <h2 className="section-heading" style={{ color: 'var(--ivory-text)' }}>RSVP</h2>
+            <p className="rsvp-subtitle">Kindly respond by {rsvpDeadline}.</p>
+            <RSVPForm brideName={brideName} groomName={groomName} rsvpDeadline={rsvpDeadline} />
           </div>
         </ScrollReveal>
       </section>
 
       {/* ══════════════════════════════════════
-           WALL OF LOVE — Dark
+           WALL OF LOVE
          ══════════════════════════════════════ */}
-      <section className="section-dark">
-        <GoldDivider opacity={0.6} />
+      <section className="section-ivory">
+        <GoldDivider />
         <ScrollReveal>
           <div className="section-wrapper">
-            <p className="section-label">✦ Spread the Love</p>
-            <h2 className="section-title" style={{ color: 'var(--ivory-text)', fontSize: 'clamp(2rem,4vw,3rem)', marginBottom: '0.5rem' }}>
-              Wall of Love
-            </h2>
-            <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--ivory-muted)', marginBottom: '2rem' }}>
-              Pin your blessings for {brideName} &amp; {groomName}.
-            </p>
+            <p className="section-eyebrow">Spread the Love</p>
+            <h2 className="section-heading">Wall of Love</h2>
+            <p className="wall-subtitle">Pin your blessings for {brideName} &amp; {groomName}.</p>
             <WallOfLove />
           </div>
         </ScrollReveal>
@@ -207,10 +171,10 @@ export default function App() {
            FOOTER
          ══════════════════════════════════════ */}
       <footer className="site-footer">
-        <img src="/gold-divider.png" alt="" aria-hidden="true" className="footer-divider" />
+        <img src="/gold-divider.png" alt="" aria-hidden="true" className="footer-divider-img" />
         <p className="footer-names">{brideName} &amp; {groomName}</p>
-        <p className="footer-date">21st August, 2026 &nbsp;·&nbsp; Golden Apple Mansion, Pritampura</p>
-        <p className="footer-tagline">With love &amp; blessings ✦</p>
+        <p className="footer-meta">21st August 2026 &nbsp;·&nbsp; Golden Apple Mansion, Pritampura</p>
+        <p className="footer-sign">With love &amp; blessings ✦</p>
       </footer>
     </>
   );
