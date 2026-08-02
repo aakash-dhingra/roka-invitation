@@ -140,37 +140,33 @@ img { display: block; max-width: 100%; }
 
 .hero-ceremony-label {
   font-family: var(--font-cinzel);
-  font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+  font-size: clamp(0.65rem, 1.8vw, 0.8rem);
   font-weight: 600;
   letter-spacing: 0.45em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 0.75rem;
   animation: slideUpFade 1s var(--ease-premium) both;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
 }
 
 .hero-bride-name, .hero-groom-name {
   font-family: var(--font-cinzel) !important;
-  font-size: clamp(1.8rem, 5vw, 3.8rem);
+  font-size: clamp(1.6rem, 4.8vw, 3.5rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  line-height: 1.2;
-  padding: 0.1em 0.25em;
-  margin: 0.25rem 0;
-  background: linear-gradient(90deg, var(--gold), var(--gold-shine), var(--gold), var(--gold-shine), var(--gold));
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: goldShimmer 5s linear infinite;
+  line-height: 1.25;
+  padding: 0.1em 0.2em;
+  margin: 0.2rem 0;
+  color: #FFF3F5; /* Bright ivory-white for maximum contrast */
+  text-shadow: 0 4px 12px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.9);
   display: inline-block;
   overflow: visible;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
 }
 
-.hero-bride-name { animation: goldShimmer 5s linear infinite, slideUpFade 1.2s var(--ease-premium) 0.2s both; }
-.hero-groom-name { animation: goldShimmer 5s linear infinite, slideUpFade 1.2s var(--ease-premium) 0.5s both; }
+.hero-bride-name { animation: slideUpFade 1.2s var(--ease-premium) 0.2s both; }
+.hero-groom-name { animation: slideUpFade 1.2s var(--ease-premium) 0.5s both; }
 
 .hero-amp-row {
   display: flex;
@@ -191,15 +187,17 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-cinzel);
   font-size: clamp(1.2rem, 3vw, 1.6rem);
   color: var(--gold);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
 }
 
 .hero-tagline {
   font-family: var(--font-dance);
   font-size: clamp(1.2rem, 3vw, 1.6rem);
   font-style: italic;
-  color: var(--ivory-muted);
+  color: var(--gold-shine);
   margin-top: 0.5rem;
   animation: slideUpFade 1.4s var(--ease-premium) 0.7s both;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
 }
 
 .hero-bottom {
