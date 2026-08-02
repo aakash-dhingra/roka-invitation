@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Reliable public royalty-free sitar/flute wedding audio url
 const MUSIC_URL = 'https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav'; // fallback/temporary short instrumental loop
-const AMBIENT_LOOP_URL = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'; // soft background music example
+const AMBIENT_LOOP_URL = '/bg-music.mp3'; // local youtube-extracted background music
 
 export function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -14,7 +14,7 @@ export function AudioPlayer() {
     // Initialize audio element with looping enabled
     audioRef.current = new Audio(AMBIENT_LOOP_URL);
     audioRef.current.loop = true;
-    audioRef.current.volume = 0.35;
+    audioRef.current.volume = 0.55;
 
     return () => {
       if (audioRef.current) {
