@@ -60,12 +60,12 @@ export default function App() {
           loop
           muted
           playsInline
-          poster="/couple-palace.png"
+          poster="/couple-story.jpg"
           className="hero-bg-scene"
           style={{ objectFit: 'cover', width: '100%', height: '100%' }}
         >
           <source src="/hero-video.mp4" type="video/mp4" />
-          <img src="/couple-palace.png" alt={`${brideName} and ${groomName}`} />
+          <img src="/couple-story.jpg" alt={`${brideName} and ${groomName}`} />
         </video>
 
         {/* Gradient: dark top for text readability, transparent middle, dark bottom */}
@@ -164,7 +164,7 @@ export default function App() {
             </div>
             <div className="story-img-frame">
               <img src="/couple-story.jpg" alt="Dr Aanchal Dhingra and Randeep Singh" className="story-img" />
-              <img src="/floral-frame.png" alt="" aria-hidden="true" className="story-frame-overlay" />
+
             </div>
           </div>
         </ScrollReveal>

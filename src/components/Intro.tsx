@@ -73,24 +73,33 @@ export function Intro({ onEnter }: IntroProps) {
       </svg>
 
       {/* ── Main stage: envelope + letter ── */}
-      <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+      <div style={{
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: EW,
+        height: EH + 320,
+      }}>
 
         {/* ════════════════════════
              LETTER CARD
             ════════════════════════ */}
         <motion.div
-          initial={{ y: 60, opacity: 0 }}
+          initial={{ y: 0, opacity: 0 }}
           animate={
-            isReveal ? { y: -(EH * 0.95), opacity: 1 } :
-            isOpen   ? { y: -(EH * 0.08), opacity: 0 } :
-                       { y: 60, opacity: 0 }
+            isReveal ? { y: -(EH * 1.05), opacity: 1 } :
+            isOpen   ? { y: -(EH * 0.2), opacity: 0 } :
+                       { y: 0, opacity: 0 }
           }
           transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
           style={{
             position: 'absolute',
-            bottom: 0,
+            bottom: 'auto',
+            top: '50%',
             left: '50%',
             translateX: '-50%',
+            translateY: '-50%',
             width: EW - 40,
             background: '#FEFCF8',
             border: '0.5px solid rgba(200,177,149,0.45)',
@@ -228,7 +237,10 @@ export function Intro({ onEnter }: IntroProps) {
           style={{
             width: EW,
             height: EH,
-            position: 'relative',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
             flexShrink: 0,
             perspective: '900px',
           }}

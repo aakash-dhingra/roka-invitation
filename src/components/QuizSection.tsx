@@ -60,7 +60,7 @@ export function QuizSection({ questions, brideName, groomName }: QuizSectionProp
               }}
             />
             <img
-              src="/couple.png"
+              src="/couple-story.jpg"
               alt={`${brideName} & ${groomName}`}
               style={{
                 width: '100%',
