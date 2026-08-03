@@ -103,7 +103,7 @@ export default function App() {
                 With the blessings of<br />
                 <strong>Shree Sardari Lal Dhingra</strong><br />
                 <span style={{ fontSize: '0.8em' }}>&amp;</span><br />
-                <strong>Shri Mati Santosh Kumari</strong>
+                <strong>Shrimati Santosh Kumari</strong>
               </p>
 
               {/* Ceremony label — slides from right */}
@@ -112,11 +112,21 @@ export default function App() {
               {/* First divider — expands from center */}
               <div className="hero-card-divider anim-expand" style={{ animationDelay: '0.7s' }} />
 
+              {/* Bride parentage detail */}
+              <p className="hero-card-parentage anim-from-left" style={{ animationDelay: '0.8s' }}>
+                D/O Kamal Kumar &amp; Sonia Dhingra
+              </p>
+
               {/* Bride name — slides from left */}
               <h1 className="hero-card-bride anim-from-left" style={{ animationDelay: '0.85s' }}>{brideName}</h1>
 
               {/* & — pops up from below */}
               <p className="hero-card-amp anim-pop" style={{ animationDelay: '1.0s' }}>&amp;</p>
+
+              {/* Groom parentage detail */}
+              <p className="hero-card-parentage anim-from-right" style={{ animationDelay: '1.05s' }}>
+                S/O Gurpreet Singh &amp; Sukhwinder Kaur
+              </p>
 
               {/* Groom name — slides from right */}
               <h1 className="hero-card-groom anim-from-right" style={{ animationDelay: '1.1s' }}>{groomName}</h1>
