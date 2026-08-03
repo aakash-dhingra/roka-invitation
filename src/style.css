@@ -354,36 +354,70 @@ img { display: block; max-width: 100%; }
   animation: slideUpFade 1.5s var(--ease-premium) 0.9s both;
 }
 
-/* Mobile: stack vertically and make sure it fits on a single viewport */
+/* Mobile: diagonally placed split items with equivalent upper/lower margins */
 @media (max-width: 640px) {
   .hero-section {
     height: 100dvh;
     max-height: 100dvh;
-    justify-content: center;
-    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
   .hero-split {
     flex-direction: column;
-    padding: 35px 0.75rem 0;
-    gap: 0.25rem;
-    height: calc(100% - 110px);
+    padding: 20px 1rem 0;
+    gap: 1.25rem;
+    height: calc(100% - 100px);
     justify-content: center;
+    align-items: center;
+    width: 100%;
   }
+  /* Place photo and card offset diagonally */
   .hero-photo-side {
-    max-width: 200px;
-    max-height: 30vh;
-    align-self: center;
+    max-width: 160px;
+    max-height: 25vh;
+    align-self: flex-start;
+    margin-left: 5%;
   }
   .hero-couple-photo {
-    max-height: 28vh;
+    max-height: 22vh;
+  }
+  .hero-card-side {
+    align-self: flex-end;
+    margin-right: 2%;
+    width: 90%;
+    max-width: 300px;
   }
   .hero-invite-card {
-    padding: 0.75rem 0.85rem;
-    max-width: 320px;
-    box-shadow: 0 2px 12px rgba(160, 80, 100, 0.1);
+    padding: 0.85rem 1rem;
+    max-width: 100%;
+    box-shadow: 0 4px 16px rgba(160, 80, 100, 0.12);
+  }
+  .hero-card-blessing {
+    margin-bottom: 0.35rem;
+    line-height: 1.35;
+    font-size: 0.58rem;
+  }
+  .hero-card-divider {
+    margin-bottom: 0.4rem;
+  }
+  .hero-card-bride,
+  .hero-card-groom {
+    font-size: 1.25rem;
+  }
+  .hero-card-meta {
+    margin-top: 0.35rem;
+    line-height: 1.35;
+    font-size: 0.55rem;
   }
   .hero-corner {
-    width: clamp(60px, 20vw, 90px);
+    width: clamp(50px, 15vw, 75px);
+  }
+  .hero-bottom {
+    margin-bottom: 0;
+    gap: 0.5rem;
   }
 }
 
