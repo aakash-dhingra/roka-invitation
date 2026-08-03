@@ -130,12 +130,6 @@ export default function App() {
               <div className="hero-card-floral-bottom anim-from-bottom" style={{ animationDelay: '1.5s' }}>🌸 💕 🌸</div>
             </div>
 
-            {/* Candles row — rises from bottom */}
-            <div className="hero-candles anim-from-bottom" style={{ animationDelay: '1.6s' }}>
-              {['🕯️','🕯️','🕯️','🕯️','🕯️'].map((c, i) => (
-                <span key={i} className="hero-candle" style={{ animationDelay: `${1.6 + i * 0.1}s` }}>{c}</span>
-              ))}
-            </div>
           </div>
         </div>
 

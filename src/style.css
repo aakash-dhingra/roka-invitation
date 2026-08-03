@@ -338,23 +338,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.03em;
 }
 
-/* Candles */
-.hero-candles {
-  display: flex;
-  gap: 0.75rem;
-  align-items: flex-end;
-}
 
-.hero-candle {
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  filter: drop-shadow(0 2px 8px rgba(255,180,0,0.5));
-  animation: candleFlicker 1.8s ease-in-out infinite alternate;
-}
-
-@keyframes candleFlicker {
-  0%   { filter: drop-shadow(0 2px 8px rgba(255,180,0,0.5)) brightness(1); }
-  100% { filter: drop-shadow(0 2px 14px rgba(255,200,0,0.8)) brightness(1.1); }
-}
 
 /* Bottom countdown row */
 .hero-bottom {
@@ -370,25 +354,36 @@ img { display: block; max-width: 100%; }
   animation: slideUpFade 1.5s var(--ease-premium) 0.9s both;
 }
 
-/* Mobile: stack vertically */
+/* Mobile: stack vertically and make sure it fits on a single viewport */
 @media (max-width: 640px) {
+  .hero-section {
+    height: 100dvh;
+    max-height: 100dvh;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+  }
   .hero-split {
     flex-direction: column;
-    padding: 55px 1rem 0;
-    gap: 0.5rem;
+    padding: 35px 0.75rem 0;
+    gap: 0.25rem;
+    height: calc(100% - 110px);
+    justify-content: center;
   }
   .hero-photo-side {
-    max-width: 280px;
+    max-width: 200px;
+    max-height: 30vh;
     align-self: center;
   }
   .hero-couple-photo {
-    max-height: 38vh;
+    max-height: 28vh;
   }
   .hero-invite-card {
-    padding: 1rem;
+    padding: 0.75rem 0.85rem;
+    max-width: 320px;
+    box-shadow: 0 2px 12px rgba(160, 80, 100, 0.1);
   }
   .hero-corner {
-    width: clamp(80px, 28vw, 130px);
+    width: clamp(60px, 20vw, 90px);
   }
 }
 
@@ -460,47 +455,47 @@ img { display: block; max-width: 100%; }
   to   { opacity: 0.9; transform: rotate(180deg) translate(0, 0) scale(1); }
 }
 
-/* Utility classes — all start invisible, fill-mode: both */
+/* Utility classes — all start invisible, fill-mode: both, slowed down to 1.4s */
 .anim-from-top {
   opacity: 0;
-  animation: heroFromTop 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation: heroFromTop 1.4s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 .anim-from-bottom {
   opacity: 0;
-  animation: heroFromBottom 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation: heroFromBottom 1.4s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 .anim-from-left {
   opacity: 0;
-  animation: heroFromLeft 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation: heroFromLeft 1.4s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 .anim-from-right {
   opacity: 0;
-  animation: heroFromRight 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation: heroFromRight 1.4s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 .anim-expand {
   opacity: 0;
-  animation: heroExpand 0.6s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation: heroExpand 1.3s cubic-bezier(0.25, 1, 0.5, 1) both;
   transform-origin: center;
 }
 .anim-pop {
   opacity: 0;
-  animation: heroPop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation: heroPop 1.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 .anim-corner-tl {
   opacity: 0;
-  animation: heroCornerTL 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.5s both;
+  animation: heroCornerTL 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.5s both;
 }
 .anim-corner-tr {
   opacity: 0;
-  animation: heroCornerTR 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.6s both;
+  animation: heroCornerTR 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.6s both;
 }
 .anim-corner-bl {
   opacity: 0;
-  animation: heroCornerBL 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.65s both;
+  animation: heroCornerBL 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.65s both;
 }
 .anim-corner-br {
   opacity: 0;
-  animation: heroCornerBR 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.7s both;
+  animation: heroCornerBR 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.7s both;
 }
 
 /* ============================================
