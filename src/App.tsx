@@ -114,12 +114,7 @@ export default function App() {
               {/* Second divider — expands from center */}
               <div className="hero-card-divider anim-expand" style={{ marginTop: '0.75rem', animationDelay: '1.25s' }} />
 
-              {/* Date/venue — rises from bottom */}
-              <p className="hero-card-meta anim-from-bottom" style={{ animationDelay: '1.35s' }}>
-                {displayDate} &nbsp;·&nbsp; {displayDay}<br />
-                {startTime} onwards<br />
-                <span style={{ fontSize: '0.85em' }}>{venueName}, {venueAddress}</span>
-              </p>
+
 
               {/* Bottom floral — rises from bottom */}
               <div className="hero-card-floral-bottom anim-from-bottom" style={{ animationDelay: '1.5s' }}>🌸 💕 🌸</div>
