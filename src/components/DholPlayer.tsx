@@ -42,10 +42,17 @@ export function DholPlayer({ isFloating = false }: { isFloating?: boolean }) {
       lastScrollTime = now;
     }
 
+    // 3. Tap / Click anywhere bursts the dhol
+    function handleTap() {
+      setSpeed(4);
+    }
+
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('click', handleTap);
+    window.addEventListener('touchstart', handleTap, { passive: true });
 
-    // 3. Decay loop
+    // 4. Decay loop
     speedDecayRef.current = window.setInterval(() => {
       setSpeed(prev => {
         if (prev < 0.15) return 0;
@@ -56,6 +63,8 @@ export function DholPlayer({ isFloating = false }: { isFloating?: boolean }) {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('click', handleTap);
+      window.removeEventListener('touchstart', handleTap);
       if (speedDecayRef.current) clearInterval(speedDecayRef.current);
     };
   }, []);

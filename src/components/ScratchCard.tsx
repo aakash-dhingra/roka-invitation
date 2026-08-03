@@ -11,7 +11,7 @@ interface ScratchCardProps {
 export function ScratchCard({
   children,
   brushSize = 30,
-  revealThreshold = 35,
+  revealThreshold = 10,
 }: ScratchCardProps) {
   const wrapperRef  = useRef<HTMLDivElement>(null);
   const canvasRef   = useRef<HTMLCanvasElement>(null);

@@ -92,158 +92,325 @@ img { display: block; max-width: 100%; }
   transform: translateY(0);
 }
 
+
 /* ============================================
-   HERO — Full Bleed Scenic Background
+   HERO — Split Layout (Photo + Invite Card)
    ============================================ */
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100dvh;
+  min-height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  background: #4A020D;
+  align-items: stretch;
+  background: #F7C5D5;
 }
 
-.hero-bg-scene {
+/* Romantic pink-purple gradient background */
+.hero-bg-gradient {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 35%;
   z-index: 0;
-  animation: kenBurnsSlow 10s ease-out forwards;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(to bottom,
-    rgba(74, 2, 13, 0.88) 0%,
-    rgba(74, 2, 13, 0.2) 40%,
-    rgba(74, 2, 13, 0.2) 60%,
-    rgba(74, 2, 13, 0.88) 100%
+  background: linear-gradient(
+    160deg,
+    #FDDDE6 0%,
+    #F9C4D2 20%,
+    #F0B8CC 40%,
+    #E8C8D8 60%,
+    #D4B8D0 80%,
+    #C9B8D8 100%
   );
 }
 
-.hero-content {
+/* String lights at the top */
+.hero-string-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+
+.hero-string-lights::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(180,140,60,0.6) 10%, rgba(180,140,60,0.6) 90%, transparent);
+}
+
+.hero-light-bulb {
+  display: inline-block;
+  width: 10px;
+  height: 16px;
+  background: radial-gradient(circle at 40% 35%, #FFF9B0, #FFD700 50%, #FFA500);
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 0 0 8px 3px rgba(255, 220, 80, 0.75), 0 0 18px 4px rgba(255,180,0,0.35);
+  animation: lightFlicker 2s ease-in-out infinite alternate;
+  position: relative;
+  bottom: 2px;
+}
+
+@keyframes lightFlicker {
+  0%   { opacity: 1;    box-shadow: 0 0 8px 3px rgba(255,220,80,0.75); }
+  50%  { opacity: 0.82; box-shadow: 0 0 5px 2px rgba(255,200,50,0.5); }
+  100% { opacity: 1;    box-shadow: 0 0 12px 5px rgba(255,240,100,0.9); }
+}
+
+/* Floral corner images */
+.hero-corner {
+  position: absolute;
+  z-index: 4;
+  width: clamp(130px, 22vw, 220px);
+  height: auto;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.hero-corner-tl { top: -10px; left: -10px; transform: rotate(0deg); }
+.hero-corner-tr { top: -10px; right: -10px; transform: rotate(90deg); }
+.hero-corner-bl { bottom: -10px; left: -10px; transform: rotate(270deg); }
+.hero-corner-br { bottom: -10px; right: -10px; transform: rotate(180deg); }
+
+/* Split layout */
+.hero-split {
   position: relative;
   z-index: 2;
-  text-align: center;
-  margin-top: clamp(2.5rem, 8vh, 5rem);
-  padding: 0 1.5rem;
-}
-
-.hero-ceremony-label {
-  font-family: var(--font-cinzel);
-  font-size: clamp(0.65rem, 1.8vw, 0.8rem);
-  font-weight: 600;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 0.75rem;
-  animation: slideUpFade 1s var(--ease-premium) both;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
-}
-
-.hero-bride-name, .hero-groom-name {
-  font-family: var(--font-cinzel) !important;
-  font-size: clamp(1.6rem, 4.8vw, 3.5rem);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  line-height: 1.25;
-  padding: 0.1em 0.2em;
-  margin: 0.2rem 0;
-  color: #FFF3F5; /* Bright ivory-white for maximum contrast */
-  text-shadow: 0 4px 12px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.9);
-  display: inline-block;
-  overflow: visible;
-}
-
-.hero-bride-name { animation: slideUpFade 1.2s var(--ease-premium) 0.2s both; }
-.hero-groom-name { animation: slideUpFade 1.2s var(--ease-premium) 0.5s both; }
-
-.hero-amp-row {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
-  margin: 0.2rem 0;
-  animation: slideUpFade 1.2s var(--ease-premium) 0.35s both;
+  flex: 1;
+  width: 100%;
+  gap: 0;
+  padding: 60px 2vw 0;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.hero-amp-line {
-  width: clamp(30px, 8vw, 70px);
-  height: 0.5px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
+/* Left: photo */
+.hero-photo-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  min-width: 0;
+  max-width: 480px;
 }
 
-.hero-amp {
+.hero-couple-photo {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 8px 32px rgba(120,40,60,0.25));
+  animation: slideUpFade 1.2s var(--ease-premium) 0.2s both;
+}
+
+/* Lanterns */
+.hero-lanterns {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  padding: 0 0.5rem;
+}
+
+.hero-lantern {
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  filter: drop-shadow(0 4px 12px rgba(255,160,0,0.5));
+  animation: sway 3s ease-in-out infinite alternate;
+}
+
+.hero-lantern-l { animation-delay: 0s; }
+.hero-lantern-r { animation-delay: 0.8s; }
+
+@keyframes sway {
+  from { transform: rotate(-6deg); }
+  to   { transform: rotate(6deg); }
+}
+
+/* Right: invitation card */
+.hero-card-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 0 1rem;
+  gap: 0.75rem;
+  animation: slideUpFade 1.2s var(--ease-premium) 0.4s both;
+}
+
+.hero-invite-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 155, 170, 0.4);
+  border-radius: 4px;
+  padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem);
+  text-align: center;
+  box-shadow:
+    0 4px 24px rgba(160, 80, 100, 0.15),
+    0 1px 4px rgba(160, 80, 100, 0.1),
+    inset 0 0 0 1px rgba(255,255,255,0.6);
+  max-width: 380px;
+  width: 100%;
+  position: relative;
+}
+
+.hero-card-floral-top,
+.hero-card-floral-bottom {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.3em;
+}
+.hero-card-floral-bottom { margin-top: 0.5rem; margin-bottom: 0; }
+
+.hero-card-blessing {
+  font-family: var(--font-sans);
+  font-size: clamp(0.6rem, 1.4vw, 0.75rem);
+  color: #5A3A3A;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-card-ceremony {
   font-family: var(--font-cinzel);
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  color: var(--gold);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+  font-size: clamp(0.55rem, 1.4vw, 0.7rem);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C06080;
+  margin-bottom: 0.5rem;
 }
 
-.hero-tagline {
+.hero-card-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #C8A0B0, transparent);
+  margin: 0 auto 0.75rem;
+}
+
+.hero-card-bride,
+.hero-card-groom {
+  font-family: var(--font-dance) !important;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: #8B2252;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: none;
+}
+
+.hero-card-amp {
   font-family: var(--font-dance);
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  font-style: italic;
-  color: var(--gold-shine);
-  margin-top: 0.5rem;
-  animation: slideUpFade 1.4s var(--ease-premium) 0.7s both;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  color: #C06080;
+  margin: 0.1rem 0;
+  line-height: 1;
 }
 
+.hero-card-meta {
+  font-family: var(--font-sans);
+  font-size: clamp(0.55rem, 1.3vw, 0.7rem);
+  color: #7A4A5A;
+  line-height: 1.7;
+  margin-top: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+/* Candles */
+.hero-candles {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.hero-candle {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  filter: drop-shadow(0 2px 8px rgba(255,180,0,0.5));
+  animation: candleFlicker 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes candleFlicker {
+  0%   { filter: drop-shadow(0 2px 8px rgba(255,180,0,0.5)) brightness(1); }
+  100% { filter: drop-shadow(0 2px 14px rgba(255,200,0,0.8)) brightness(1.1); }
+}
+
+/* Bottom countdown row */
 .hero-bottom {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  margin-bottom: clamp(1.5rem, 5vh, 3.5rem);
+  gap: 1rem;
+  margin-bottom: clamp(1rem, 3vh, 2rem);
   padding: 0 1.5rem;
   animation: slideUpFade 1.5s var(--ease-premium) 0.9s both;
 }
 
+/* Mobile: stack vertically */
+@media (max-width: 640px) {
+  .hero-split {
+    flex-direction: column;
+    padding: 55px 1rem 0;
+    gap: 0.5rem;
+  }
+  .hero-photo-side {
+    max-width: 280px;
+    align-self: center;
+  }
+  .hero-couple-photo {
+    max-height: 38vh;
+  }
+  .hero-invite-card {
+    padding: 1rem;
+  }
+  .hero-corner {
+    width: clamp(80px, 28vw, 130px);
+  }
+}
+
+/* Scroll cue at bottom of hero */
 .hero-scroll-cue {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
 }
-
 .hero-scroll-line {
   width: 1px;
-  height: 36px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
+  height: 30px;
+  background: linear-gradient(to bottom, #C06080, transparent);
 }
-
 .hero-scroll-label {
   font-family: var(--font-cinzel);
   font-size: 0.52rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--ivory-muted);
+  color: #8B4A60;
   animation: floatIndicator 2s ease-in-out infinite;
-}
-
-.hero-floral-strip {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  z-index: 3;
-  pointer-events: none;
-  opacity: 0.85;
 }
 
 /* ============================================

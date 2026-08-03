@@ -48,59 +48,87 @@ export default function App() {
       <PetalRain count={18} />
 
       {/* ══════════════════════════════════════
-           HERO — Full-bleed cinematic painting with Swinging Bells
+           HERO — Split Layout: Couple Photo + Invitation Card
          ══════════════════════════════════════ */}
       <section id="hero" className="hero-section">
         {/* Hanging golden temple bells */}
         <SwingingBells />
 
-        {/* Full-bleed background video, falls back to the painting */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/couple-story.jpg"
-          className="hero-bg-scene"
-          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-          <img src="/couple-story.jpg" alt={`${brideName} and ${groomName}`} />
-        </video>
+        {/* Soft pink-purple background */}
+        <div className="hero-bg-gradient" />
 
-        {/* Gradient: dark top for text readability, transparent middle, dark bottom */}
-        <div className="hero-overlay" />
+        {/* String lights top */}
+        <div className="hero-string-lights">
+          {Array.from({ length: 14 }).map((_, i) => (
+            <span key={i} className="hero-light-bulb" style={{ animationDelay: `${i * 0.18}s` }} />
+          ))}
+        </div>
 
-        {/* Text — top center */}
-        <div className="hero-content">
-          <p
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.05rem, 2.5vw, 1.35rem)',
-              color: '#FFF3F5',
-              marginBottom: '1.25rem',
-              letterSpacing: '0.05em',
-              lineHeight: 1.5,
-              opacity: 0.95,
-            }}
-          >
-            With the blessings of<br />
-            <strong style={{ color: 'var(--gold-shine)' }}>Shree Sardari Lal Dhingra</strong> &amp; <strong style={{ color: 'var(--gold-shine)' }}>Shri Mati Santosh Kumari</strong>
-          </p>
+        {/* Floral top-left corner */}
+        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-tl" />
+        {/* Floral top-right corner */}
+        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-tr" />
+        {/* Floral bottom-left corner */}
+        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-bl" />
+        {/* Floral bottom-right corner */}
+        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-br" />
 
-          <p className="hero-ceremony-label">✦ &nbsp; Roka Ceremony &nbsp; ✦</p>
-
-          <h1 className="hero-bride-name">{brideName}</h1>
-
-          <div className="hero-amp-row">
-            <span className="hero-amp-line" />
-            <span className="hero-amp">&amp;</span>
-            <span className="hero-amp-line" />
+        {/* Main split layout */}
+        <div className="hero-split">
+          {/* LEFT — Couple image */}
+          <div className="hero-photo-side">
+            <img
+              src="/couple.png"
+              alt={`${brideName} and ${groomName}`}
+              className="hero-couple-photo"
+            />
+            {/* Lanterns */}
+            <div className="hero-lanterns">
+              <span className="hero-lantern hero-lantern-l">🪔</span>
+              <span className="hero-lantern hero-lantern-r">🪔</span>
+            </div>
           </div>
 
-          <h1 className="hero-groom-name">{groomName}</h1>
+          {/* RIGHT — Invitation card */}
+          <div className="hero-card-side">
+            <div className="hero-invite-card">
+              {/* Top floral accent */}
+              <div className="hero-card-floral-top">🌸 🌿 🌸</div>
 
-          <p className="hero-tagline">{tagline}</p>
+              <p className="hero-card-blessing">
+                With the blessings of<br />
+                <strong>Shree Sardari Lal Dhingra</strong><br />
+                <span style={{ fontSize: '0.8em' }}>&amp;</span><br />
+                <strong>Shri Mati Santosh Kumari</strong>
+              </p>
+
+              <p className="hero-card-ceremony">✦ &nbsp; ROKA CEREMONY &nbsp; ✦</p>
+
+              <div className="hero-card-divider" />
+
+              <h1 className="hero-card-bride">{brideName}</h1>
+              <p className="hero-card-amp">&amp;</p>
+              <h1 className="hero-card-groom">{groomName}</h1>
+
+              <div className="hero-card-divider" style={{ marginTop: '0.75rem' }} />
+
+              <p className="hero-card-meta">
+                {displayDate} &nbsp;·&nbsp; {displayDay}<br />
+                {startTime} onwards<br />
+                <span style={{ fontSize: '0.85em' }}>{venueName}, {venueAddress}</span>
+              </p>
+
+              {/* Bottom floral accent */}
+              <div className="hero-card-floral-bottom">🌸 💕 🌸</div>
+            </div>
+
+            {/* Candles row below card */}
+            <div className="hero-candles">
+              {['🕯️','🕯️','🕯️','🕯️','🕯️'].map((c, i) => (
+                <span key={i} className="hero-candle" style={{ animationDelay: `${i * 0.3}s` }}>{c}</span>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Countdown — bottom center */}
