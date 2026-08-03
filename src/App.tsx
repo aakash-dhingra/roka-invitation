@@ -54,14 +54,28 @@ export default function App() {
         {/* Hanging golden temple bells */}
         <SwingingBells />
 
-        {/* Full-bleed background image with opacity */}
-        <div 
-          className="hero-bg-scene-image"
+        {/* Full-bleed background video with fallback poster */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hero-bg-video"
+          poster="/couple-bouquet.png"
           style={{
-            backgroundImage: 'url("/couple-bouquet.png")',
-            opacity: 0.35
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 0,
+            opacity: 1, /* Full opacity for video as requested */
           }}
-        />
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+          {/* Fallback image if video is not supported or not loaded yet */}
+          <img src="/couple-bouquet.png" alt="Wedding Couple" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </video>
 
         {/* Gradient overlay for contrast */}
         <div className="hero-overlay" />
