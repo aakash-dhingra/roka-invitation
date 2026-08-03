@@ -78,7 +78,7 @@ export default function App() {
           {/* LEFT — Couple image */}
           <div className="hero-photo-side">
             <img
-              src="/couple-palace.png"
+              src="/couple-bouquet.png"
               alt={`${brideName} and ${groomName}`}
               className="hero-couple-photo"
             />
