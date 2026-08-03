@@ -73,11 +73,7 @@ export default function App() {
           ))}
         </div>
 
-        {/* Floral corner decorations — scale in from corners */}
-        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-tl anim-corner-tl" />
-        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-tr anim-corner-tr" />
-        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-bl anim-corner-bl" />
-        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-br anim-corner-br" />
+
 
         {/* Center layout for content */}
         <div className="hero-center-content">
