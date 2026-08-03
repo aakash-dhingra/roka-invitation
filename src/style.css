@@ -414,6 +414,96 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================
+   HERO — Directional Entrance Animations
+   ============================================ */
+
+/* Keyframes */
+@keyframes heroFromTop {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFromBottom {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFromLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroFromRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroExpand {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+@keyframes heroPop {
+  0%   { opacity: 0; transform: scale(0.4) translateY(20px); }
+  70%  { transform: scale(1.15) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes heroCornerTL {
+  from { opacity: 0; transform: rotate(0deg) translate(-30px, -30px) scale(0.6); }
+  to   { opacity: 0.9; transform: rotate(0deg) translate(0, 0) scale(1); }
+}
+@keyframes heroCornerTR {
+  from { opacity: 0; transform: rotate(90deg) translate(-30px, -30px) scale(0.6); }
+  to   { opacity: 0.9; transform: rotate(90deg) translate(0, 0) scale(1); }
+}
+@keyframes heroCornerBL {
+  from { opacity: 0; transform: rotate(270deg) translate(-30px, -30px) scale(0.6); }
+  to   { opacity: 0.9; transform: rotate(270deg) translate(0, 0) scale(1); }
+}
+@keyframes heroCornerBR {
+  from { opacity: 0; transform: rotate(180deg) translate(-30px, -30px) scale(0.6); }
+  to   { opacity: 0.9; transform: rotate(180deg) translate(0, 0) scale(1); }
+}
+
+/* Utility classes — all start invisible, fill-mode: both */
+.anim-from-top {
+  opacity: 0;
+  animation: heroFromTop 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+.anim-from-bottom {
+  opacity: 0;
+  animation: heroFromBottom 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+.anim-from-left {
+  opacity: 0;
+  animation: heroFromLeft 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+.anim-from-right {
+  opacity: 0;
+  animation: heroFromRight 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+.anim-expand {
+  opacity: 0;
+  animation: heroExpand 0.6s cubic-bezier(0.25, 1, 0.5, 1) both;
+  transform-origin: center;
+}
+.anim-pop {
+  opacity: 0;
+  animation: heroPop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.anim-corner-tl {
+  opacity: 0;
+  animation: heroCornerTL 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.5s both;
+}
+.anim-corner-tr {
+  opacity: 0;
+  animation: heroCornerTR 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.6s both;
+}
+.anim-corner-bl {
+  opacity: 0;
+  animation: heroCornerBL 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.65s both;
+}
+.anim-corner-br {
+  opacity: 0;
+  animation: heroCornerBR 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.7s both;
+}
+
+/* ============================================
    SECTIONS — VIBRANT PALETTE SWAP
    ============================================ */
 .section-ivory { background-color: var(--canvas); color: var(--espresso); }

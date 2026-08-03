@@ -64,19 +64,16 @@ export default function App() {
           ))}
         </div>
 
-        {/* Floral top-left corner */}
-        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-tl" />
-        {/* Floral top-right corner */}
-        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-tr" />
-        {/* Floral bottom-left corner */}
-        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-bl" />
-        {/* Floral bottom-right corner */}
-        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-br" />
+        {/* Floral corner decorations — scale in from corners */}
+        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-tl anim-corner-tl" />
+        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-tr anim-corner-tr" />
+        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-bl anim-corner-bl" />
+        <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-br anim-corner-br" />
 
         {/* Main split layout */}
         <div className="hero-split">
-          {/* LEFT — Couple image */}
-          <div className="hero-photo-side">
+          {/* LEFT — Couple image slides in from left */}
+          <div className="hero-photo-side anim-from-left" style={{ animationDelay: '0.15s' }}>
             <img
               src="/couple-bouquet.png"
               alt={`${brideName} and ${groomName}`}
@@ -92,44 +89,56 @@ export default function App() {
           {/* RIGHT — Invitation card */}
           <div className="hero-card-side">
             <div className="hero-invite-card">
-              {/* Top floral accent */}
-              <div className="hero-card-floral-top">🌸 🌿 🌸</div>
 
-              <p className="hero-card-blessing">
+              {/* Top floral — drops from top */}
+              <div className="hero-card-floral-top anim-from-top" style={{ animationDelay: '0.1s' }}>🌸 🌿 🌸</div>
+
+              {/* Blessing — slides from left */}
+              <p className="hero-card-blessing anim-from-left" style={{ animationDelay: '0.3s' }}>
                 With the blessings of<br />
                 <strong>Shree Sardari Lal Dhingra</strong><br />
                 <span style={{ fontSize: '0.8em' }}>&amp;</span><br />
                 <strong>Shri Mati Santosh Kumari</strong>
               </p>
 
-              <p className="hero-card-ceremony">✦ &nbsp; ROKA CEREMONY &nbsp; ✦</p>
+              {/* Ceremony label — slides from right */}
+              <p className="hero-card-ceremony anim-from-right" style={{ animationDelay: '0.55s' }}>✦ &nbsp; ROKA CEREMONY &nbsp; ✦</p>
 
-              <div className="hero-card-divider" />
+              {/* First divider — expands from center */}
+              <div className="hero-card-divider anim-expand" style={{ animationDelay: '0.7s' }} />
 
-              <h1 className="hero-card-bride">{brideName}</h1>
-              <p className="hero-card-amp">&amp;</p>
-              <h1 className="hero-card-groom">{groomName}</h1>
+              {/* Bride name — slides from left */}
+              <h1 className="hero-card-bride anim-from-left" style={{ animationDelay: '0.85s' }}>{brideName}</h1>
 
-              <div className="hero-card-divider" style={{ marginTop: '0.75rem' }} />
+              {/* & — pops up from below */}
+              <p className="hero-card-amp anim-pop" style={{ animationDelay: '1.0s' }}>&amp;</p>
 
-              <p className="hero-card-meta">
+              {/* Groom name — slides from right */}
+              <h1 className="hero-card-groom anim-from-right" style={{ animationDelay: '1.1s' }}>{groomName}</h1>
+
+              {/* Second divider — expands from center */}
+              <div className="hero-card-divider anim-expand" style={{ marginTop: '0.75rem', animationDelay: '1.25s' }} />
+
+              {/* Date/venue — rises from bottom */}
+              <p className="hero-card-meta anim-from-bottom" style={{ animationDelay: '1.35s' }}>
                 {displayDate} &nbsp;·&nbsp; {displayDay}<br />
                 {startTime} onwards<br />
                 <span style={{ fontSize: '0.85em' }}>{venueName}, {venueAddress}</span>
               </p>
 
-              {/* Bottom floral accent */}
-              <div className="hero-card-floral-bottom">🌸 💕 🌸</div>
+              {/* Bottom floral — rises from bottom */}
+              <div className="hero-card-floral-bottom anim-from-bottom" style={{ animationDelay: '1.5s' }}>🌸 💕 🌸</div>
             </div>
 
-            {/* Candles row below card */}
-            <div className="hero-candles">
+            {/* Candles row — rises from bottom */}
+            <div className="hero-candles anim-from-bottom" style={{ animationDelay: '1.6s' }}>
               {['🕯️','🕯️','🕯️','🕯️','🕯️'].map((c, i) => (
-                <span key={i} className="hero-candle" style={{ animationDelay: `${i * 0.3}s` }}>{c}</span>
+                <span key={i} className="hero-candle" style={{ animationDelay: `${1.6 + i * 0.1}s` }}>{c}</span>
               ))}
             </div>
           </div>
         </div>
+
 
         {/* Countdown — bottom center */}
         <div className="hero-bottom">
