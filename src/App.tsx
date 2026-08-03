@@ -54,8 +54,17 @@ export default function App() {
         {/* Hanging golden temple bells */}
         <SwingingBells />
 
-        {/* Soft pink-purple background */}
-        <div className="hero-bg-gradient" />
+        {/* Full-bleed background image with opacity */}
+        <div 
+          className="hero-bg-scene-image"
+          style={{
+            backgroundImage: 'url("/couple-bouquet.png")',
+            opacity: 0.35
+          }}
+        />
+
+        {/* Gradient overlay for contrast */}
+        <div className="hero-overlay" />
 
         {/* String lights top */}
         <div className="hero-string-lights">
@@ -70,22 +79,8 @@ export default function App() {
         <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-bl anim-corner-bl" />
         <img src="/floral-frame.png" aria-hidden="true" className="hero-corner hero-corner-br anim-corner-br" />
 
-        {/* Main split layout */}
-        <div className="hero-split">
-          {/* LEFT — Couple image slides in from left */}
-          <div className="hero-photo-side anim-from-left" style={{ animationDelay: '0.15s' }}>
-            <img
-              src="/couple-bouquet.png"
-              alt={`${brideName} and ${groomName}`}
-              className="hero-couple-photo"
-            />
-            {/* Lanterns */}
-            <div className="hero-lanterns">
-              <span className="hero-lantern hero-lantern-l">🪔</span>
-              <span className="hero-lantern hero-lantern-r">🪔</span>
-            </div>
-          </div>
-
+        {/* Center layout for content */}
+        <div className="hero-center-content">
           {/* RIGHT — Invitation card */}
           <div className="hero-card-side">
             <div className="hero-invite-card">
@@ -129,10 +124,8 @@ export default function App() {
               {/* Bottom floral — rises from bottom */}
               <div className="hero-card-floral-bottom anim-from-bottom" style={{ animationDelay: '1.5s' }}>🌸 💕 🌸</div>
             </div>
-
           </div>
         </div>
-
 
         {/* Countdown — bottom center */}
         <div className="hero-bottom">

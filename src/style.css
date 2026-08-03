@@ -108,19 +108,27 @@ img { display: block; max-width: 100%; }
   background: #F7C5D5;
 }
 
-/* Romantic pink-purple gradient background */
-.hero-bg-gradient {
+/* Full-bleed background image with opacity */
+.hero-bg-scene-image {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 30%;
   z-index: 0;
+}
+
+/* Overlay gradient for contrast */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   background: linear-gradient(
-    160deg,
-    #FDDDE6 0%,
-    #F9C4D2 20%,
-    #F0B8CC 40%,
-    #E8C8D8 60%,
-    #D4B8D0 80%,
-    #C9B8D8 100%
+    to bottom,
+    rgba(74, 2, 13, 0.45) 0%,
+    rgba(74, 2, 13, 0.25) 50%,
+    rgba(74, 2, 13, 0.55) 100%
   );
 }
 
@@ -182,69 +190,19 @@ img { display: block; max-width: 100%; }
 .hero-corner-bl { bottom: -10px; left: -10px; transform: rotate(270deg); }
 .hero-corner-br { bottom: -10px; right: -10px; transform: rotate(180deg); }
 
-/* Split layout */
-.hero-split {
+/* Centered content layout */
+.hero-center-content {
   position: relative;
   z-index: 2;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1;
   width: 100%;
-  gap: 0;
-  padding: 60px 2vw 0;
-  max-width: 1100px;
+  padding: 60px 1rem 0;
+  max-width: 600px;
   margin: 0 auto;
-}
-
-/* Left: photo */
-.hero-photo-side {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  position: relative;
-  min-width: 0;
-  max-width: 480px;
-}
-
-.hero-couple-photo {
-  width: 100%;
-  max-width: 420px;
-  height: auto;
-  max-height: 70vh;
-  object-fit: contain;
-  object-position: bottom;
-  filter: drop-shadow(0 8px 32px rgba(120,40,60,0.25));
-  animation: slideUpFade 1.2s var(--ease-premium) 0.2s both;
-}
-
-/* Lanterns */
-.hero-lanterns {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  padding: 0 0.5rem;
-}
-
-.hero-lantern {
-  font-size: clamp(1.5rem, 4vw, 2.4rem);
-  filter: drop-shadow(0 4px 12px rgba(255,160,0,0.5));
-  animation: sway 3s ease-in-out infinite alternate;
-}
-
-.hero-lantern-l { animation-delay: 0s; }
-.hero-lantern-r { animation-delay: 0.8s; }
-
-@keyframes sway {
-  from { transform: rotate(-6deg); }
-  to   { transform: rotate(6deg); }
 }
 
 /* Right: invitation card */
@@ -354,70 +312,45 @@ img { display: block; max-width: 100%; }
   animation: slideUpFade 1.5s var(--ease-premium) 0.9s both;
 }
 
-/* Mobile: diagonally placed split items with equivalent upper/lower margins */
+/* Mobile: center card on viewport */
 @media (max-width: 640px) {
   .hero-section {
     height: 100dvh;
     max-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
-  .hero-split {
-    flex-direction: column;
-    padding: 20px 1rem 0;
-    gap: 1.25rem;
-    height: calc(100% - 100px);
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  /* Place photo and card offset diagonally */
-  .hero-photo-side {
-    max-width: 160px;
-    max-height: 25vh;
-    align-self: flex-start;
-    margin-left: 5%;
-  }
-  .hero-couple-photo {
-    max-height: 22vh;
+  .hero-center-content {
+    padding: 40px 0.75rem 0;
+    height: calc(100% - 90px);
   }
   .hero-card-side {
-    align-self: flex-end;
-    margin-right: 2%;
-    width: 90%;
-    max-width: 300px;
+    width: 100%;
+    max-width: 320px;
   }
   .hero-invite-card {
-    padding: 0.85rem 1rem;
-    max-width: 100%;
-    box-shadow: 0 4px 16px rgba(160, 80, 100, 0.12);
+    padding: 1.2rem 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
   .hero-card-blessing {
-    margin-bottom: 0.35rem;
-    line-height: 1.35;
-    font-size: 0.58rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    font-size: 0.65rem;
   }
   .hero-card-divider {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
   }
   .hero-card-bride,
   .hero-card-groom {
-    font-size: 1.25rem;
+    font-size: 1.6rem;
   }
   .hero-card-meta {
-    margin-top: 0.35rem;
-    line-height: 1.35;
-    font-size: 0.55rem;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    font-size: 0.62rem;
   }
   .hero-corner {
-    width: clamp(50px, 15vw, 75px);
-  }
-  .hero-bottom {
-    margin-bottom: 0;
-    gap: 0.5rem;
+    width: clamp(60px, 18vw, 100px);
   }
 }
 
