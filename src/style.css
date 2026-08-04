@@ -848,6 +848,13 @@ img { display: block; max-width: 100%; }
   margin-top: 0.5rem;
 }
 
+.developer-footer {
+  background: #360E17; /* Darker tone to separate branding styles */
+  padding: 1rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* ============================================
    RESPONSIVE LAYOUTS
    ============================================ */

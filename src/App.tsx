@@ -264,8 +264,12 @@ export default function App() {
         <p className="footer-names">{brideName} &amp; {groomName}</p>
         <p className="footer-meta">21st August 2026 &nbsp;·&nbsp; Golden Apple Mansion, Pitampura</p>
         <p className="footer-sign">With love &amp; blessings ✦</p>
-        <p className="footer-credit" style={{ fontSize: '0.55rem', opacity: 0.7, marginTop: '0.5rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'var(--font-sans)', color: '#FFF3F5' }}>Made with Love By Aakash Dhingra</p>
       </footer>
+      <div className="developer-footer">
+        <p className="footer-credit" style={{ fontSize: '0.55rem', opacity: 0.65, letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'var(--font-sans)', color: '#FFF3F5', margin: 0 }}>
+          Made with Love By Aakash Dhingra
+        </p>
+      </div>
     </>
   );
 }
