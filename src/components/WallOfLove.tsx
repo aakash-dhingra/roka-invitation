@@ -10,13 +10,9 @@ interface Message {
 }
 
 const BIN_URL = 'https://json.extendsclass.com/bin/fcffbbd';
-const LOCAL_STORAGE_KEY = 'roka_wishes_cache';
+const LOCAL_STORAGE_KEY = 'roka_wishes_cache_v2';
 
-const DEFAULT_WISHES: Message[] = [
-  { id: 1, name: "Aunty Meera", text: "So proud of you both. May your lives be filled with endless love and laughter!", rotation: -2 },
-  { id: 2, name: "Rahul & Tanya", text: "We've been waiting for this day forever! Congratulations, you two beautiful humans.", rotation: 1.5 },
-  { id: 3, name: "Dadi Ji", text: "Bahut bahut shubh kamnaaen. Khush raho, phalo phulo.", rotation: -1 }
-];
+const DEFAULT_WISHES: Message[] = [];
 
 function generateRotation() {
   return (Math.random() - 0.5) * 6; // between -3 and +3

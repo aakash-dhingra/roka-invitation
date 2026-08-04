@@ -8,6 +8,7 @@ const AMBIENT_LOOP_URL = '/bg-music.mp3'; // local youtube-extracted background 
 
 export function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [showAlert, setShowAlert] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -50,12 +51,18 @@ export function AudioPlayer() {
     window.addEventListener('click', handleUserInteraction);
     window.addEventListener('touchstart', handleUserInteraction);
 
+    // Auto dismiss alert/tooltip after 7 seconds
+    const alertTimer = setTimeout(() => {
+      setShowAlert(false);
+    }, 7000);
+
     return () => {
       audio.removeEventListener('ended', handleEnded);
       audio.pause();
       audioRef.current = null;
       window.removeEventListener('click', handleUserInteraction);
       window.removeEventListener('touchstart', handleUserInteraction);
+      clearTimeout(alertTimer);
     };
   }, []);
 
@@ -64,6 +71,7 @@ export function AudioPlayer() {
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
+      setShowAlert(false); // Dismiss instantly if user clicks
     } else {
       audioRef.current.play().catch(err => {
         console.warn('Audio play blocked by browser. User interaction required first.', err);
@@ -81,6 +89,47 @@ export function AudioPlayer() {
         zIndex: 9999,
       }}
     >
+      <AnimatePresence>
+        {showAlert && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 5, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: 'absolute',
+              bottom: '55px',
+              left: '0',
+              background: 'rgba(74, 21, 33, 0.95)',
+              color: '#FFF3F5',
+              padding: '0.45rem 0.75rem',
+              borderRadius: '6px',
+              fontSize: '0.62rem',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.25)',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
+              fontFamily: 'var(--font-sans)',
+              letterSpacing: '0.05em',
+              pointerEvents: 'none',
+            }}
+          >
+            Click here to turn off audio
+            <div 
+              style={{
+                position: 'absolute',
+                top: '100%',
+                left: '18px',
+                width: 0,
+                height: 0,
+                borderLeft: '5px solid transparent',
+                borderRight: '5px solid transparent',
+                borderTop: '5px solid rgba(74, 21, 33, 0.95)',
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.button
         onClick={togglePlay}
         whileHover={{ scale: 1.1 }}
