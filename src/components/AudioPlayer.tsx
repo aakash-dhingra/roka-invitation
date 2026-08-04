@@ -7,7 +7,7 @@ const MUSIC_URL = 'https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav'
 const AMBIENT_LOOP_URL = '/bg-music.mp3'; // local youtube-extracted background music
 
 export function AudioPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -26,10 +26,36 @@ export function AudioPlayer() {
     audio.addEventListener('ended', handleEnded);
     audioRef.current = audio;
 
+    // Attempt to play on mount (if browser autoplay allows)
+    audio.play().then(() => {
+      setIsPlaying(true);
+    }).catch(err => {
+      console.warn('Auto-play blocked by browser. Music will start on user interaction.', err);
+    });
+
+    // Global listener to trigger audio once user interacts with the page
+    const handleUserInteraction = () => {
+      if (audio.paused) {
+        audio.play().then(() => {
+          setIsPlaying(true);
+        }).catch(err => {
+          console.warn('Audio play on user interaction failed:', err);
+        });
+      }
+      // Remove listeners after first interaction
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
+    };
+
+    window.addEventListener('click', handleUserInteraction);
+    window.addEventListener('touchstart', handleUserInteraction);
+
     return () => {
       audio.removeEventListener('ended', handleEnded);
       audio.pause();
       audioRef.current = null;
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
     };
   }, []);
 
@@ -40,7 +66,7 @@ export function AudioPlayer() {
       setIsPlaying(false);
     } else {
       audioRef.current.play().catch(err => {
-        console.warn('Audio auto-play blocked by browser. User interaction required first.', err);
+        console.warn('Audio play blocked by browser. User interaction required first.', err);
       });
       setIsPlaying(true);
     }

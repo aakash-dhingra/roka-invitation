@@ -254,9 +254,9 @@ img { display: block; max-width: 100%; }
   font-weight: 800; /* Extra bold */
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #FF2A4B; /* Vibrant red ceremony label */
+  color: #FF5A00; /* Dark orange ceremony label */
   margin-bottom: 0.75rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 0 10px rgba(255, 90, 0, 0.85), 0 0 20px rgba(255, 90, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.95);
   white-space: nowrap; /* Force one line */
 }
 
@@ -585,9 +585,9 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-cinzel);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 600;
-  color: #FF2A4B; /* Red numbers for video readability */
+  color: #FF5A00; /* Glowing dark orange numbers */
   line-height: 1;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 18px rgba(255, 42, 75, 0.35);
+  text-shadow: 0 0 15px rgba(255, 90, 0, 0.8), 0 0 25px rgba(255, 90, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.9);
 }
 
 .countdown-label {
@@ -595,10 +595,10 @@ img { display: block; max-width: 100%; }
   font-size: 0.52rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: #FF5773; /* Red/pink labels */
+  color: #FF8533; /* Glowing orange labels */
   margin-top: 0.35rem;
   display: block;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
+  text-shadow: 0 0 8px rgba(255, 133, 51, 0.6), 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 /* ============================================
