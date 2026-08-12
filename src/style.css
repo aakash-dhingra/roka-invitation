@@ -377,14 +377,15 @@ img { display: block; max-width: 100%; }
 .hero-scroll-line {
   width: 1px;
   height: 30px;
-  background: linear-gradient(to bottom, #C06080, transparent);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9), transparent);
 }
 .hero-scroll-label {
   font-family: var(--font-cinzel);
   font-size: 0.52rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: #8B4A60;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.7);
   animation: floatIndicator 2s ease-in-out infinite;
 }
 
